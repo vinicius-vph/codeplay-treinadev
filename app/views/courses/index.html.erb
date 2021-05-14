@@ -1,0 +1,6 @@
+<% @courses.each do |course| %>
+    <h1><%= course.name %></h1>
+    <p><%= course.description %></p>
+    <p><%= number_to_currency course.price, unit: 'R$', separator: ',', delimiter: '.', format: '%u %n' %></p>
+
+<% end %>
