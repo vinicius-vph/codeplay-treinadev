@@ -14,5 +14,7 @@
     <%= f.label :enrollment_deadline, 'Data limite de matrícula' %>
     <%= f.text_field :enrollment_deadline %>
 
+    <%= @course.errors.messages %>
+
     <%= f.submit 'Criar curso' %>
 <% end %>
