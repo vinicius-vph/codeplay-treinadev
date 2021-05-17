@@ -1,17 +1,40 @@
 <h1>Detalhes do curso</h1>
 
-<h2><%= @course.name %></h2>
-<dl>
-    <dt>Descrição</dt>
-        <dd><%= @course.description %></dd>
-    <dt>Código</dt>
-        <dd><%= @course.code %></dd>
-    <dt>Preço</dt>
-        <dd><%= number_to_currency @course.price, 
-        unit: 'R$', separator: ',', delimiter: '.', format: '%u %n' %></dd>
-    <dt>Data limite de matricula</dt>
-        <dd><%= @course.enrollment_deadline.strftime('%d/%m/%Y') %></dd>
-</dl>
+<table style="text-align:center;">
+    <tr>
+        <td>
+            <h2><%= @course.name %></h2>
+        </td>
+    </tr>
+    <tr>
+        <th>Descrição</th>
+    </tr>
+    <tr>
+        <td><%= @course.description %></td>
+    </tr>
+    <tr>
+        <th>Código</th>
+        <tr>
+            <td><%= @course.code %></td>
+        </tr>
+    </tr>
+    <tr>
+        <th>Preço</th>
+        <tr>
+            <td><%= number_to_currency @course.price, 
+        unit: 'R$', separator: ',', delimiter: '.', format: '%u %n' %></td>
+        </tr>
+    </tr>
+    <tr>
+        <th>Data limite de matricula</th>
+        <tr>
+            <td><%= @course.enrollment_deadline.strftime('%d/%m/%Y') %></td>
+        </tr>
+    </tr>
 
+</table>
+
+<br>
 <%= link_to 'Voltar', courses_path %>
+
   

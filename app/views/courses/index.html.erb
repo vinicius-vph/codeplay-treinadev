@@ -1,13 +1,32 @@
 <% if @courses.empty? %>
    <p>Nenhum curso disponível</p> 
+<% else %>
+    <h1>Cursos Disponíveis</h1>
 <% end %>
 
 <% @courses.each do |course| %>
-    <h1><%= link_to course.name, course %></h1>
-    <p><%= course.description %></p>
-    <p><%= number_to_currency course.price, 
-        unit: 'R$', separator: ',', delimiter: '.', format: '%u %n' %>
-    </p>
+    <table style="text-align:center;">
+        <thead>
+            <tr>
+                <h2><%= link_to course.name, course %></h2>
+            </tr>
+        </thead>
+        <tr>
+            <th>Descrição</th>
+        </tr>
+        <tr>
+            <td><p><%= course.description %></p></td>
+        </tr>
+        <tr>
+            <th>Preço</th>
+        </tr>
+        <tr>
+            <td><p><%= number_to_currency course.price, 
+                unit: 'R$', separator: ',', delimiter: '.', format: '%u %n' %>
+                </p>
+            </td>
+        </tr>
+    </table>
 <% end %>
 
 <%= link_to "Registrar um Curso", new_course_path %>
