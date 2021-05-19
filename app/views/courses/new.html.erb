@@ -1,29 +1,3 @@
 <h1>Registrar um curso</h1>
 
-<%= form_with model: @course do |f| %>
-    <%= f.label :name, 'Nome' %>
-    <%= f.text_field :name %>
-
-    <%= f.label :description, 'Descrição' %>
-    <%= f.text_area :description %>
-
-    <%= f.label :code, 'Código' %>
-    <%= f.text_field :code %>
-
-    <%= f.label :price, 'Preço' %>
-    <%= f.number_field :price %>
-
-    <%= f.label :enrollment_deadline, 'Data limite de matrícula' %>
-    <%= f.date_field :enrollment_deadline %>
-
-    <%= f.label :banner , 'Banner' %>
-    <%= f.file_field :banner  %>
-
-    <%= f.submit 'Criar curso' %>
-<% end %>
-
-<% if @course.errors.messages.any? %>
-    <%  @course.errors.messages.each_value do |value|  %>    
-       <p><%= value.first %></p>
-    <% end %>
-<% end %>
+<%= render partial: 'form', locals: { course: @course, button_text: 'Criar curso'} %>
