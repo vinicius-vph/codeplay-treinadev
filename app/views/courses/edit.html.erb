@@ -1,4 +1,4 @@
-<h1>Registrar um curso</h1>
+<h1>Editar um curso</h1>
 
 <%= form_with model: @course do |f| %>
     <%= f.label :name, 'Nome' %>
@@ -19,11 +19,5 @@
     <%= f.label :banner , 'Banner' %>
     <%= f.file_field :banner  %>
 
-    <%= f.submit 'Criar curso' %>
-<% end %>
-
-<% if @course.errors.messages.any? %>
-    <%  @course.errors.messages.each_value do |value|  %>    
-       <p><%= value.first %></p>
-    <% end %>
+    <%= f.submit 'Salvar' %>
 <% end %>

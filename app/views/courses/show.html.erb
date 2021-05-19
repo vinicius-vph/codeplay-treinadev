@@ -22,7 +22,11 @@
         <th>Preço</th>
         <tr>
             <td><%= number_to_currency @course.price, 
-        unit: 'R$', separator: ',', delimiter: '.', format: '%u %n' %></td>
+                                        unit: 'R$', 
+                                        separator: ',', 
+                                        delimiter: '.', 
+                                        format: '%u %n' %>
+            </td>
         </tr>
     </tr>
     <tr>
@@ -31,10 +35,18 @@
             <td><%= @course.enrollment_deadline.strftime('%d/%m/%Y') %></td>
         </tr>
     </tr>
+    <tr>
+        <th>Banner</th>
+        <tr>
+            <% if @course.banner.attached? %>
+                <td><%= image_tag @course.banner %></td>
+            <% end %>
+        </tr>
+    </tr>
 
 </table>
 
 <br>
 <%= link_to 'Voltar', courses_path %>
-
-  
+<%= link_to "Editar", edit_course_path(@course) %>
+<%= link_to "Apagar", @course, method: :delete %>
