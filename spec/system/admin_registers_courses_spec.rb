@@ -10,6 +10,8 @@ describe 'Admin registers courses' do
   end
 
   it 'successfully' do
+    instructor = Instructor.create!(name: 'Jonh Doe', email: 'jonh@doe.com')
+
     visit root_path
     click_on 'Cursos'
     click_on 'Registrar um Curso'
@@ -19,6 +21,7 @@ describe 'Admin registers courses' do
     fill_in 'Código', with: 'RUBYONRAILS'
     fill_in 'Preço', with: '30'
     fill_in 'Data limite de matrícula', with: '22/12/2033'
+    select "#{instructor.name} - #{instructor.email}", from: 'Instrutor(a)'
     attach_file 'Banner', Rails.root.join('tmp/img/teste.png')
     click_on 'Criar curso'
 
@@ -33,27 +36,21 @@ describe 'Admin registers courses' do
   end
 
   it 'and attributes cannot be blank' do
-    Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                   code: 'RUBYBASIC', price: 10,
-                   enrollment_deadline: '22/12/2033')
-
     visit root_path
     click_on 'Cursos'
     click_on 'Registrar um Curso'
-    fill_in 'Nome', with: ''
-    fill_in 'Descrição', with: ''
-    fill_in 'Código', with: ''
-    fill_in 'Preço', with: ''
-    fill_in 'Data limite de matrícula', with: ''
     click_on 'Criar curso'
 
     expect(page).to have_content('não pode ficar em branco', count: 3)
+    expect(page).to have_content('Instrutor(a) é obrigatório(a)')
   end
 
   it 'and code must be unique' do
+    instructor = Instructor.create!(name: 'Fulano Sicrano',
+                                    email: 'fulano@codeplay.com.br')
     Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
                    code: 'RUBYBASIC', price: 10,
-                   enrollment_deadline: '22/12/2033')
+                   enrollment_deadline: '22/12/2033', instructor: instructor)
 
     visit root_path
     click_on 'Cursos'
