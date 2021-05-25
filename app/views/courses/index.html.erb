@@ -21,16 +21,10 @@
             <th>Preço</th>
         </tr>
         <tr>
-            <td><p><%= number_to_currency course.price, 
-                                                unit: 'R$', 
-                                                separator: ',', 
-                                                delimiter: '.', 
-                                                format: '%u %n' %>
-                </p>
-            </td>
+            <td><p><%= number_to_currency course.price %></p></td>
         </tr>
     </table>
 <% end %>
 
 <%= link_to "Registrar um Curso", new_course_path %>
-<%= link_to "Voltar", root_path %>
+<%= link_to "Voltar", root_path, method: :get %>

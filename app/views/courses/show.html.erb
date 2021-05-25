@@ -1,5 +1,9 @@
 <h1>Detalhes do curso</h1>
 
+<% if @course.banner.attached? %>
+  <%= image_tag @course.banner %>
+<% end %>
+
 <table style="text-align:center;">
     <tr>
         <td>
@@ -7,7 +11,7 @@
         </td>
     </tr>
     <tr>
-        <th>Descrição</th>
+        <th><%= Course.human_attribute_name(:description) %></th>
     </tr>
     <tr>
         <td><%= @course.description %></td>
@@ -21,26 +25,20 @@
     <tr>
         <th>Preço</th>
         <tr>
-            <td><%= number_to_currency @course.price, 
-                                        unit: 'R$', 
-                                        separator: ',', 
-                                        delimiter: '.', 
-                                        format: '%u %n' %>
+            <td><%= number_to_currency @course.price %>
             </td>
         </tr>
     </tr>
     <tr>
         <th>Data limite de matricula</th>
         <tr>
-            <td><%= @course.enrollment_deadline.strftime('%d/%m/%Y') %></td>
+            <td><%= l @course.enrollment_deadline %></td>
         </tr>
     </tr>
     <tr>
-        <th>Banner</th>
+        <th>Instrutor(a)</th>
         <tr>
-            <% if @course.banner.attached? %>
-                <td><%= image_tag @course.banner %></td>
-            <% end %>
+            <td><%= @course.instructor.name %></td>
         </tr>
     </tr>
 

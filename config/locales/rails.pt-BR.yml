@@ -109,10 +109,10 @@ pt-BR:
   errors:
     format: "%{attribute} %{message}"
     messages:
-      accepted: deve ser aceito
-      blank: não pode ficar em branco
-      confirmation: não é igual a %{attribute}
-      empty: não pode ficar vazio
+      accepted: 'deve ser aceito'
+      blank: 'não pode ficar em branco'
+      confirmation: 'não é igual a %{attribute}'
+      empty: 'não pode ficar vazio'
       equal_to: deve ser igual a %{count}
       even: deve ser par
       exclusion: não está disponível
