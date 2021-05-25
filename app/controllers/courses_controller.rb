@@ -9,6 +9,7 @@ class CoursesController < ApplicationController
     end
 
     def new
+        @instructors = Instructor.all
         @course = Course.new
     end
 
@@ -18,16 +19,18 @@ class CoursesController < ApplicationController
         if @course.save
             redirect_to @course
         else
+            @instructors = Instructor.all
             render :new
         end
     end
 
     def edit
+        @instructors = Instructor.all
     end
     
     def update
         @course.update(course_params)
-        redirect_to @course, notice: 'Curso atualizado com sucesso'
+        redirect_to @course, notice: t('.success')
     end
 
     def destroy
@@ -44,6 +47,6 @@ class CoursesController < ApplicationController
     def course_params
         params
             .require(:course)
-            .permit(:name, :description, :code, :price, :enrollment_deadline, :banner)
+            .permit(:name, :description, :code, :price, :enrollment_deadline, :banner, :instructor_id)
     end
 end 
