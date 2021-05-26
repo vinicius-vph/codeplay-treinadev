@@ -1,34 +1,52 @@
-<% if course.errors.any? %>
-  <p>Foram encontrados <%= course.errors.count %> erro(s):</p>
-  <div>
-    <% course.errors.full_messages.each do |error| %>
-      <li><%= error %></li>
+<div class="w3-container w3-center" id="" style="margin-top:75px">
+  <% if course.errors.any? %>
+    <div class="w3-panel w3-yellow w3-center" style="width:300px">
+      <p>Foram encontrados <%= course.errors.count %> erro(s):</p>
+    </div> 
+    <div>
+      <% course.errors.full_messages.each do |error| %>
+        <div class="w3-panel w3-red w3-center" style="width:300px">
+          <li><%= error %></li>
+        </div> 
+      <% end %>
+    </div>
+  <% end %>
+
+
+
+  <div class="w3-container w3-center" id="" style="margin-top:75px">
+    <%= form_with model: course do |f| %>
+      <div class="w3-section">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="w3-section">
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+      </div>
+      <div class="w3-section">
+        <%= f.label :code %>
+        <%= f.text_field :code %>
+      </div>
+      <div class="w3-section">
+        <%= f.label :price %>
+       <%= f.number_field :price %>
+      </div>
+      <div class="w3-section">
+        <%= f.label :enrollment_deadline %>
+        <%= f.date_field :enrollment_deadline %>
+      </div>
+
+      <div class="w3-section">
+       <%= f.label :instructor_id, 'Instrutor(a)' %>
+       <%= f.collection_select :instructor_id, instructors, :id, :display_name %>
+      </div>
+
+      <div class="w3-section">
+        <%= f.label :banner %>
+        <%= f.file_field :banner  %>
+      </div>
+      <%= f.submit button_text, class: "w3-button w3-small w3-round-large w3-padding-large w3-deep-purple w3-margin-bottom" %>
     <% end %>
   </div>
-<% end %>
-
-
-<%= form_with model: course do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-
-    <%= f.label :code %>
-    <%= f.text_field :code %>
-
-    <%= f.label :price %>
-    <%= f.number_field :price %>
-
-    <%= f.label :enrollment_deadline %>
-    <%= f.date_field :enrollment_deadline %>
-
-    <%= f.label :instructor_id, 'Instrutor(a)' %>
-    <%= f.collection_select :instructor_id, instructors, :id, :display_name %>
-
-    <%= f.label :banner %>
-    <%= f.file_field :banner  %>
-
-    <%= f.submit button_text %>
-<% end %>
+</div>

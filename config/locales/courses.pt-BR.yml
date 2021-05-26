@@ -2,7 +2,7 @@
 pt-BR:
   courses:
     new:
-      title: 'Registrar um teste'
+      title: ''
     update:
       success: 'Curso atualizado com sucesso'
   activerecord:
