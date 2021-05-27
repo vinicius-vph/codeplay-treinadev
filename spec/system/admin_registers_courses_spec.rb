@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Admin registers courses' do
-  it 'from index page' do
+  it '- Should be access courses from index page' do
     visit root_path
     click_on 'Cursos'
 
@@ -9,7 +9,7 @@ describe 'Admin registers courses' do
                               href: new_course_path)
   end
 
-  it 'successfully' do
+  it '- Should be able create a course with instructor and see last created' do
     instructor = Instructor.create!(name: 'Jonh Doe', email: 'jonh@doe.com')
 
     visit root_path
@@ -35,7 +35,7 @@ describe 'Admin registers courses' do
     expect(page).to have_link('Voltar')
   end
 
-  it 'and attributes cannot be blank' do
+  it '- Should be able to see that attributes cannot be blank' do
     visit root_path
     click_on 'Cursos'
     click_on 'Registrar um Curso'
@@ -45,7 +45,7 @@ describe 'Admin registers courses' do
     expect(page).to have_content('Instrutor(a) é obrigatório(a)')
   end
 
-  it 'and code must be unique' do
+  it '- Should be able to see that a course code must be unique' do
     instructor = Instructor.create!(name: 'Fulano Sicrano',
                                     email: 'fulano@codeplay.com.br')
     Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
