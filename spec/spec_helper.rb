@@ -93,4 +93,7 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  RSpec.configure do |c|
+    c.example_status_persistence_file_path = "failed-tests.txt"
+  end
 end

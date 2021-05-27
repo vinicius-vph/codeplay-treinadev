@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe Course do
-  context 'validation' do
-    it 'attributes cannot be blank' do
+  context 'Validation' do
+    it '- Should be able to see that attributes cannot be blank' do
       course = Course.new
 
       course.valid?
@@ -12,7 +12,7 @@ describe Course do
       expect(course.errors[:price]).to include('não pode ficar em branco')
     end
 
-    it 'code must be uniq' do
+    it '- Should be able to see that a course code must be unique' do
       instructor = Instructor.create!(name: 'Jonh Doe', email: 'jonh@doe.com')
       Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
                     code: 'RUBYBASIC', price: 10,

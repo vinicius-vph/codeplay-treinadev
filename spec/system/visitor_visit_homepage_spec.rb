@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Visitor visit homepage' do
-   it 'successfully' do
+   it '- Should be able to access homepage' do
         visit root_path
 
         expect(page).to have_css('h1', text: 'Codeplay')

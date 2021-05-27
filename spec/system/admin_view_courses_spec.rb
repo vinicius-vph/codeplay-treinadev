@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Admin view courses' do
-  it 'successfully' do
+  it '- Should be able create a course' do
     instructor = Instructor.create!(name: 'Jonh Doe', email: 'jonh@doe.com')
     Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
                    code: 'RUBYBASIC', price: 10,
@@ -22,7 +22,7 @@ describe 'Admin view courses' do
     expect(page).to have_content('R$ 20,00')
   end
 
-  it 'and view details' do
+  it '- Should be able create a course and view details' do
     instructor = Instructor.create!(name: 'Jonh Doe', email: 'jonh@doe.com')
     Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
                    code: 'RUBYBASIC', price: 10,
@@ -43,14 +43,14 @@ describe 'Admin view courses' do
     expect(page).to have_content('20/12/2033')
   end
 
-  it 'and no course is available' do
+  it '- Should be able to see no course available' do
     visit root_path
     click_on 'Cursos'
 
     expect(page).to have_content('Nenhum curso disponível')
   end
 
-  it 'and return to home page' do
+  it '- Should be able return to home page' do
     instructor = Instructor.create!(name: 'Jonh Doe', email: 'jonh@doe.com')
     Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
                    code: 'RUBYBASIC', price: 10,
@@ -63,7 +63,7 @@ describe 'Admin view courses' do
     expect(current_path).to eq root_path
   end
 
-  it 'and return to promotions page' do
+  it '- Should be able return to promotions page' do
     instructor = Instructor.create!(name: 'Jonh Doe', email: 'jonh@doe.com')
     Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
                    code: 'RUBYBASIC', price: 10,
@@ -77,7 +77,7 @@ describe 'Admin view courses' do
     expect(current_path).to eq courses_path
   end
 
-  it 'and view details' do
+  it '- Should be able create a course with banner' do
     instructor = Instructor.create!(name: 'Jonh Doe', email: 'jonh@doe.com')
 
     Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
@@ -103,41 +103,5 @@ describe 'Admin view courses' do
     expect(page).to have_content('R$ 20,00')
     expect(page).to have_content('20/12/2033')
 
-  end
-
-  it 'and no course is available' do
-    visit root_path
-    click_on 'Cursos'
-
-    expect(page).to have_content('Nenhum curso disponível')
-  end
-
-  it 'and return to home page' do
-    instructor = Instructor.create!(name: 'Fulano Sicrano',
-                                    email: 'fulano@codeplay.com.br')
-    Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                   code: 'RUBYBASIC', price: 10,
-                   enrollment_deadline: '22/12/2033', instructor: instructor)
-
-    visit root_path
-    click_on 'Cursos'
-    click_on 'Voltar'
-
-    expect(current_path).to eq root_path
-  end
-
-  it 'and return to promotions page' do
-    instructor = Instructor.create!(name: 'Fulano Sicrano',
-                                    email: 'fulano@codeplay.com.br')
-    Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                   code: 'RUBYBASIC', price: 10,
-                   enrollment_deadline: '22/12/2033', instructor: instructor)
-
-    visit root_path
-    click_on 'Cursos'
-    click_on 'Ruby'
-    click_on 'Voltar'
-
-    expect(current_path).to eq courses_path
   end
 end
