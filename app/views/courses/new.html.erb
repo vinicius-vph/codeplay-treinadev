@@ -1,3 +1,10 @@
-<h1><%= t '.title' %></h1>
-
-<%= render 'form', course: @course, instructors: @instructors, button_text: 'Criar curso' %>
+<section class="App-flex App-flex-column">
+    <header class="App-flex-center">
+        <h2><%= t '.title' %></h2>
+        <h2>Cadastrar um curso</h2>
+    </header>
+    
+    <article style="margin-top: 2rem;">
+        <%= render 'form', course: @course, instructors: @instructors, button_text: 'Criar curso' %>
+    </article>
+</section>

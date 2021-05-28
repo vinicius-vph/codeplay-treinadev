@@ -1,50 +1,58 @@
-<div >
+<header class="App-flex-column" style="justify-content: space-around; position: relative;">
   <% if course.errors.any? %>
-    <div>
-      <p class="">Foram encontrados <%= course.errors.count %> erro(s):</p>
+    <div class="App-alert info App-flex-center" >
+      <p>Foram encontrados <%= course.errors.count %> erro(s):</p>
+      <span class="App-btn-close-alert">&times;</span>
     </div> 
-    <div>
-      <% course.errors.full_messages.each do |error| %>
-        <div>
-          <li class=""><%= error %></li>
-        </div> 
-      <% end %>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form_with model: course do |f| %>
-      <div>
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-      </div>
-      <div>
-        <%= f.label :description %>
-        <%= f.text_area :description %>
-      </div>
-      <div>
-        <%= f.label :code %>
-        <%= f.text_field :code %>
-      </div>
-      <div>
-        <%= f.label :price %>
-       <%= f.number_field :price %>
-      </div>
-      <div>
-        <%= f.label :enrollment_deadline %>
-        <%= f.date_field :enrollment_deadline %>
-      </div>
-
-      <div>
-       <%= f.label :instructor_id, 'Instrutor(a)' %>
-       <%= f.collection_select :instructor_id, instructors, :id, :display_name %>
-      </div>
-
-      <div>
-        <%= f.label :banner %>
-        <%= f.file_field :banner  %>
-      </div>
-      <%= f.submit button_text %>
+    
+    <% course.errors.full_messages.each do |error| %>
+      <div class="App-alert warning App-flex-center">
+        <p class=""><%= error %></p>
+          <span class="App-btn-close-alert">&times;</span>
+      </div> 
     <% end %>
-  </div>
+
+  <% end %>
+</header>
+
+<div class="App-card App-div-form App-flex-center App-flex-column">
+  <%= form_with model: course do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :code %>
+    <%= f.text_field :code %>
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+    <%= f.label :enrollment_deadline %>
+    <%= f.date_field :enrollment_deadline %>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+    <%= f.label :instructor_id, 'Instrutor(a)' %>
+    <%= f.collection_select :instructor_id, instructors, :id, :display_name %>
+    <%= f.label :banner %>
+    <%= f.file_field :banner  %>
+    <%= f.submit button_text %>
+  <% end %>
 </div>
+
+<script>
+  // Get all elements with class="App-btn-close-alert"
+  var close = document.getElementsByClassName("App-btn-close-alert");
+  var i;
+
+  // Loop through all close buttons
+  for (i = 0; i < close.length; i++) {
+    // When someone clicks on a close button
+    close[i].onclick = function(){
+
+      // Get the parent of <span class="App-btn-close-alert"> (<div class="alert">)
+      var div = this.parentElement;
+
+      // Set the opacity of div to 0 (transparent)
+      div.style.opacity = "0";
+
+      // Hide the div after 600ms (the same amount of milliseconds it takes to fade out)
+      setTimeout(function(){ div.style.display = "none"; }, 600);
+    }
+  }
+</script>

@@ -12,31 +12,23 @@
   </head>
 
   <body>
-    <!-- Sidebar/menu on larges screens -->
-
-    <nav ><br>
-      <a>Close Menu</a>
-      <div >
-        <h3 >Codeplay Navbar</h3>
-      </div>
-      <div >
-        <a >Home</a> 
-        <a >Ver Todos Cursos</a> 
-      </div>
-    </nav> 
-
-
     <!-- Top menu on small screens -->
-    <header >|
+    <header class="App-main-header">|
       <a>☰</a>
-      <span>Codeplay</span>
+      <h1>Codeplay</h1>
     </header>
 
-    <!-- Overlay effect when opening sidebar on small screens -->
-    <div ></div>
-
+    <!-- Sidebar/menu on larges screens -->
+    <nav><br>
+        <h1>Codeplay</h1>
+      <div >
+      </div>
+      <div >
+        <a>NavBar</a> 
+      </div>
+    </nav> 
     <!-- !PAGE CONTENT! -->
-    <main class="">
+    <main>
       <% if notice %>
         <div>
           <%= notice %>

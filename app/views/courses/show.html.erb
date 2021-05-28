@@ -1,59 +1,68 @@
-<h1>Detalhes do curso</h1>
+<section>
+    <header>
+        <h1>Detalhes do curso</h1>
+    </header>
 
-<% if @course.banner.attached? %>
-  <%= image_tag @course.banner %>
-<% end %>
+    <article>
+        <header>
+            <%= link_to 'Voltar', courses_path %>
+            <%= link_to "Editar", edit_course_path(@course) %>
+            <%= link_to "Apagar", @course, method: :delete %>
+            <%= link_to 'Registrar uma aula', new_course_lesson_path(@course) %>
+        </header>   
 
-<table style="text-align:center;">
-    <tr>
-        <td>
-            <h2><%= @course.name %></h2>
-        </td>
-    </tr>
-    <tr>
-        <th><%= Course.human_attribute_name(:description) %></th>
-    </tr>
-    <tr>
-        <td><%= @course.description %></td>
-    </tr>
-    <tr>
-        <th>Código</th>
-        <tr>
-            <td><%= @course.code %></td>
-        </tr>
-    </tr>
-    <tr>
-        <th>Preço</th>
-        <tr>
-            <td><%= number_to_currency @course.price %>
-            </td>
-        </tr>
-    </tr>
-    <tr>
-        <th>Data limite de matricula</th>
-        <tr>
-            <td><%= l @course.enrollment_deadline %></td>
-        </tr>
-    </tr>
-    <tr>
-        <th>Instrutor(a)</th>
-        <tr>
-            <td><%= @course.instructor.name %></td>
-        </tr>
-    </tr>
+        <div>
+            <% if @course.banner.attached? %>
+            <%= image_tag @course.banner %>
+            <% end %>
+            
+            <table style="text-align:center;">
+                <tr>
+                    <td>
+                        <h2><%= @course.name %></h2>
+                    </td>
+                </tr>
+                <tr>
+                    <th><%= Course.human_attribute_name(:description) %></th>
+                </tr>
+                <tr>
+                    <td><%= @course.description %></td>
+                </tr>
+                <tr>
+                    <th>Código</th>
+                    <tr>
+                        <td><%= @course.code %></td>
+                    </tr>
+                </tr>
+                <tr>
+                    <th>Preço</th>
+                    <tr>
+                        <td><%= number_to_currency @course.price %>
+                        </td>
+                    </tr>
+                </tr>
+                <tr>
+                    <th>Data limite de matricula</th>
+                    <tr>
+                        <td><%= l @course.enrollment_deadline %></td>
+                    </tr>
+                </tr>
+                <tr>
+                    <th>Instrutor(a)</th>
+                    <tr>
+                        <td><%= @course.instructor.name %></td>
+                    </tr>
+                </tr>                           
+                
+            </table>
+            <div id="lessons">
+                <% @course.lessons.each do |lesson| %>
+                <%= link_to lesson.name, '#' %>
+                <p><%= t('lesson.duration', count: lesson.duration) %></p>
+                
+                <% end %>
+            </div>
 
-</table>
-
-<br>
-<%= link_to 'Voltar', courses_path %>
-<%= link_to "Editar", edit_course_path(@course) %>
-<%= link_to "Apagar", @course, method: :delete %>
-<%= link_to 'Registrar uma aula', new_course_lesson_path(@course) %>
-
-<div id="lessons">
-    <% @course.lessons.each do |lesson| %>
-    <%= link_to lesson.name, '#' %>
-    <p><%= t('lesson.duration', count: lesson.duration) %></p>
-    
-    <% end %>
-</div>
+        </div>
+    </article>
+</section>
