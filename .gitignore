@@ -36,3 +36,4 @@
 yarn-debug.log*
 .yarn-integrity
 app/views/layouts/main-layout.html
+failed-tests.txt
