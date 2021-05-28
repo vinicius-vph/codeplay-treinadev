@@ -1,9 +1,9 @@
 <!-- Header -->
-<div class="w3-container w3-center" style="margin-top:80px" id="showcase">
-    <h1 class="w3-jumbo">Codeplay</h1>
-    <h3 class="w3-xlarge w3-text-indigo"><b>Boas vindas ao sistema de gestão de cursos e aulas</b></h3>
-</div>
-<div class="w3-container w3-center" id="create-courses" style="margin-top:75px">
-    <%= button_to 'Cursos', courses_path, class: "w3-button w3-round-large w3-green", style: "width:300px;height:100px", method: :get %>
+<header>
+    <h1 >Codeplay</h1>
+    <h3 ><b>Boas vindas ao sistema de gestão de cursos e aulas</b></h3>
+</header>
+<div >
+    <%= link_to 'Ver Cursos', courses_path, method: :get %>
 </div>
   

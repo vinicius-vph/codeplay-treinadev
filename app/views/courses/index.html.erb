@@ -1,15 +1,19 @@
 <!-- Header -->
-<div class="w3-container w3-center" style="margin-top:80px" id="showcase">
-    <h1 class="w3-jumbo">Codeplay</h1>
+<div >
+    <h1>Codeplay</h1>
     <% if @courses.empty? %>
-        <h3 class="w3-xlarge w3-text-indigo">Nenhum curso disponível</h3>     
+        <h3 >Nenhum curso disponível</h3>     
     <% else %>
-        <h3 class="w3-xlarge w3-text-indigo">Cursos Disponíveis</h3>
+        <h3 >Cursos Disponíveis</h3>
     <% end %>
 </div>
-<div class="w3-container w3-center" id="" style="margin-top:75px">
-    <%= link_to "Registrar um Curso", new_course_path, class: "w3-button w3-round-large w3-green", style: "width:200px;height:50px" %>
-    <%= link_to "Voltar", root_path, method: :get, class: "w3-button w3-round-large w3-red", style: "width:200px;height:50px" %>
+<div >
+    <div>
+        <%= link_to "Registrar um Curso", new_course_path, method: :get, style: "width:50%" %>
+        <%= link_to "Voltar", root_path, method: :get, style: "width:50%" %>
+    </div>
+
+
     <% @courses.each do |course| %>
         <table style="text-align:center;">
             <thead>
