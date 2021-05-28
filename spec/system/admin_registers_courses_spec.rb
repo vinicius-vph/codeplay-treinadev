@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Admin registers courses' do
   it '- Should be access courses from index page' do
     visit root_path
-    click_on 'Cursos'
+    click_on 'Ver Cursos'
 
     expect(page).to have_link('Registrar um Curso',
                               href: new_course_path)
@@ -13,7 +13,7 @@ describe 'Admin registers courses' do
     instructor = Instructor.create!(name: 'Jonh Doe', email: 'jonh@doe.com')
 
     visit root_path
-    click_on 'Cursos'
+    click_on 'Ver Cursos'
     click_on 'Registrar um Curso'
 
     fill_in 'Nome', with: 'Ruby on Rails'
@@ -37,7 +37,7 @@ describe 'Admin registers courses' do
 
   it '- Should be able to see that attributes cannot be blank' do
     visit root_path
-    click_on 'Cursos'
+    click_on 'Ver Cursos'
     click_on 'Registrar um Curso'
     click_on 'Criar curso'
 
@@ -53,7 +53,7 @@ describe 'Admin registers courses' do
                    enrollment_deadline: '22/12/2033', instructor: instructor)
 
     visit root_path
-    click_on 'Cursos'
+    click_on 'Ver Cursos'
     click_on 'Registrar um Curso'
     fill_in 'Código', with: 'RUBYBASIC'
     click_on 'Criar curso'

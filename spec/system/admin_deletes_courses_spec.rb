@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'admin deletes courses' do
+describe 'Admin deletes courses' do
     it '- Should be able delete a course' do
         instructor = Instructor.create!(name: 'Jonh Doe', email: 'jonh@doe.com')
         course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',

@@ -12,7 +12,7 @@ describe 'Admin view courses' do
                    enrollment_deadline: '20/12/2033', instructor: instructor)
 
     visit root_path
-    click_on 'Cursos'
+    click_on 'Ver Cursos'
 
     expect(page).to have_content('Ruby')
     expect(page).to have_content('Um curso de Ruby')
@@ -33,7 +33,7 @@ describe 'Admin view courses' do
                    enrollment_deadline: '20/12/2033', instructor: instructor)
 
     visit root_path
-    click_on 'Cursos'
+    click_on 'Ver Cursos'
     click_on 'Ruby on Rails'
 
     expect(page).to have_content('Ruby on Rails')
@@ -45,7 +45,7 @@ describe 'Admin view courses' do
 
   it '- Should be able to see no course available' do
     visit root_path
-    click_on 'Cursos'
+    click_on 'Ver Cursos'
 
     expect(page).to have_content('Nenhum curso disponível')
   end
@@ -57,7 +57,7 @@ describe 'Admin view courses' do
                    enrollment_deadline: '22/12/2033', instructor: instructor)
 
     visit root_path
-    click_on 'Cursos'
+    click_on 'Ver Cursos'
     click_on 'Voltar'
 
     expect(current_path).to eq root_path
@@ -70,7 +70,7 @@ describe 'Admin view courses' do
                    enrollment_deadline: '22/12/2033', instructor: instructor)
 
     visit root_path
-    click_on 'Cursos'
+    click_on 'Ver Cursos'
     click_on 'Ruby'
     click_on 'Voltar'
 
@@ -92,7 +92,7 @@ describe 'Admin view courses' do
       banner: fixture_file_upload(Rails.root.join('tmp/img/teste.png')))
 
     visit root_path
-    click_on 'Cursos'
+    click_on 'Ver Cursos'
     click_on 'Ruby on Rails'
 
     expect(page).to have_css('img[src*="teste.png"]')
