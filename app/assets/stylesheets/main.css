@@ -1,28 +1,251 @@
-main {
-  width: 80%;
-  height: 90%;
-  margin:0 40px 0 340px;
-  border: 2px orange solid;
+/*mobile first*/
+header {
+  display: flex;
+  align-items: center;
+  border: 1px solid green;
 }
 
 nav {
-  height:100%;
-  width:200px;
-  border: 1px solid gray;
-  position:fixed!important;
-  z-index:1;
-  overflow:auto;
+  display: none;
 }
 
-nav a {
-  width:100%;
-  font-size:22px
-}
-
-.cp-form-flex div {
+main {
   display: flex;
-  flex-direction: column;
+  height: 89.9vh;
+  border: 2px orange solid;
+}
+
+section, article, nav {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: 4rem;
+  margin: 1.6rem 0;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 1.6rem 0;
+}
+
+h3 {
+  font-size: 1.8rem;
+  margin: 1.6rem 0;
+}
+
+p {
+  font-size: 1.8rem;
+}
+
+label {
+  color: var(--nubank);
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+a {
+  display: flex;
   align-items: center;
-  margin-bottom: 5%;
-  justify-content: space-between;
-} 
+  justify-content: center;
+  text-decoration: none;
+  color: var(--sweet-blue);
+
+  /* border: yellow 1px solid; */
+}
+
+form {
+  width: 100%;
+  height: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+
+form input[type="text"], 
+form input[type="number"], 
+form input[type="date"], 
+form input[type="file"], 
+form input[type="submit"],
+form textarea, 
+form select {
+  border: none;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+form input[type="text"], 
+form input[type="number"], 
+form input[type="date"], 
+form input[type="file"], 
+form textarea, 
+form select {
+ width: 60%;
+}
+
+form input[type="submit"] {
+  background-color: var(--green);
+  color: var(--light);
+  margin-top: 1.5rem;
+  width: 30%;
+  height: 3.5rem;
+}
+
+form select {
+ border: none;
+ border-radius: 1rem;
+}
+
+
+
+form input, form select {
+ height: 2.5rem;
+}
+
+.App-main-header {
+  height: 10vh;
+}
+
+.App-main-header a {
+  font-size: 5rem;
+}
+
+.App-main-header h1 {
+  margin-left: 30%;
+}
+
+.App-navigation-button {
+  height: 6rem;
+  width: 20rem;
+  font-size: 2rem;
+  font-weight: 600;
+
+  border: yellow 1px solid;
+}
+
+
+/*design classes*/
+.App-flex {
+  display: flex;
+}
+
+.App-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.App-flex-row {
+  flex-direction: row;
+}
+
+.App-flex-column {
+  flex-direction: column;
+}
+
+.App-round-border {
+  border-radius: 1rem;
+}
+
+.App-card {
+  background-color: var(--nubank-second);
+  box-shadow: 0 .4rem .8rem 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 1rem;
+}
+
+.App-card:hover {
+  box-shadow: 0 .8rem 1.6rem 0 rgba(0,0,0,0.2);
+}
+
+.App-div-form {
+  width: 80%;
+  height: 53rem;
+  margin: 10rem auto;
+}
+
+
+
+/*Alerts*/
+.App-alert {
+  width: 25rem;
+  height: 5rem;
+  padding: .2rem;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity .6s;
+  margin-bottom: .5rem;
+  border-radius: 1rem;
+}
+
+.App-alert p {
+  font-size: 1.2rem;
+}
+.App-alert.success {background-color: var(--success);}
+.App-alert.info {background-color: var(--info);}
+.App-alert.warning {background-color: var(--warning);}
+.App-alert.error {background-color:var(--danger);}
+
+.App-btn-close-alert {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 2.2rem;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.App-btn-close-alert:hover {
+  color: black;
+}
+
+
+
+
+
+
+
+
+
+@media (min-width: 700px) {
+  main {
+    height: 100%;
+    margin: 0 auto auto 15.09%;
+    border: 2px orange solid;
+  }
+
+  nav {
+    display: block;
+    height: 100%;
+    width: 15%;
+    border: 1px solid gray;
+    position: fixed!important;
+    z-index: 1;
+    overflow: auto;
+  }
+
+  nav a {
+    width: 100%;
+    font-size: 2.2rem;
+  }
+
+  .App-main-header {
+    display: none;
+  }  
+
+  .App-main-header h1 {
+    margin-left: 40%;
+  }
+
+  .App-div-form {
+    width: 30%;
+
+  }
+}
