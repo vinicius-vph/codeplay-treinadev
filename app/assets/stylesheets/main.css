@@ -1,0 +1,28 @@
+main {
+  width: 80%;
+  height: 90%;
+  margin:0 40px 0 340px;
+  border: 2px orange solid;
+}
+
+nav {
+  height:100%;
+  width:200px;
+  border: 1px solid gray;
+  position:fixed!important;
+  z-index:1;
+  overflow:auto;
+}
+
+nav a {
+  width:100%;
+  font-size:22px
+}
+
+.cp-form-flex div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5%;
+  justify-content: space-between;
+} 
