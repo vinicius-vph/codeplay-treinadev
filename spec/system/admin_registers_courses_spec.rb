@@ -26,7 +26,7 @@ describe 'Admin registers courses' do
     click_on 'Criar curso'
 
     expect(current_path).to eq(course_path(Course.last))
-    expect(page).to have_content('Ruby on Rails')
+    expect(page).to have_content('Ruby on Rails') 
     expect(page).to have_content('Um curso de Ruby on Rails')
     expect(page).to have_content('RUBYONRAILS')
     expect(page).to have_content('R$ 30,00')
@@ -35,7 +35,7 @@ describe 'Admin registers courses' do
     expect(page).to have_link('Voltar')
   end
 
-  it '- Should be able to see that attributes cannot be blank' do
+  it '- Should be able to see that course attributes cannot be blank' do
     visit root_path
     click_on 'Ver Cursos'
     click_on 'Registrar um Curso'
