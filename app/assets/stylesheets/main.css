@@ -2,7 +2,6 @@
 header {
   display: flex;
   align-items: center;
-  border: 1px solid green;
 }
 
 nav {
@@ -10,9 +9,8 @@ nav {
 }
 
 main {
-  display: flex;
+  /* display: flex; */
   height: 89.9vh;
-  border: 2px orange solid;
 }
 
 section, article, nav {
@@ -124,7 +122,6 @@ form input, form select {
   font-size: 2rem;
   font-weight: 600;
 
-  border: yellow 1px solid;
 }
 
 
@@ -163,9 +160,11 @@ form input, form select {
 }
 
 .App-div-form {
-  width: 80%;
-  height: 53rem;
-  margin: 10rem auto;
+  width: 90%;
+  height: 45rem;
+  margin: 0 auto;
+  /* border: yellow 1px solid; */
+
 }
 
 
@@ -218,7 +217,6 @@ form input, form select {
   main {
     height: 100%;
     margin: 0 auto auto 15.09%;
-    border: 2px orange solid;
   }
 
   nav {
@@ -245,7 +243,7 @@ form input, form select {
   }
 
   .App-div-form {
-    width: 30%;
+    width: 40%;
 
   }
 }
