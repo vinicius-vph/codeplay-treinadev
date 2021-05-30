@@ -41,7 +41,7 @@ describe 'Admin view lessons' do
     expect(page).to have_content('Esse curso ainda não tem aulas cadastradas')
   end
 
-  it 'Should be able to see lessons details' do
+  it '- Should be able to see lessons details' do
     instructor = Instructor.create!(name: 'Jonh Doe',
       email: 'jonh@doe.com')
     course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
