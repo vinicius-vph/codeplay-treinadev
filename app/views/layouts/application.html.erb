@@ -30,6 +30,13 @@
     </nav> 
     <!-- !PAGE CONTENT! -->
     <main>
+      <% if user_signed_in? %>
+        <%= current_user.email %>
+        <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Registrar-me', new_user_registration_path, method: :get, class: "App-navigation-button App-round-border" %>
+        <%= link_to 'Entrar', new_user_session_path, method: :get, class: "App-navigation-button App-round-border" %>
+      <% end %>
       <% if notice %>
         <div>
           <%= notice %>
