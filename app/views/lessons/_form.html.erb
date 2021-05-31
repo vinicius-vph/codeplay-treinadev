@@ -1,4 +1,3 @@
-<header class="App-flex-column" style="justify-content: space-around; position: relative;">
   <% if lesson.errors.any? %>
     <div class="App-alert info App-flex-center" >
       <p>Foram encontrados <%= lesson.errors.count %> erro(s):</p>
@@ -12,7 +11,8 @@
       </div> 
     <% end %>
   <% end %>
-</header>
+<%# <header class="App-flex-columnx">
+</header> %>
 
 <div>
   <%= form_with model: [course, lesson] do |f| %>
@@ -28,24 +28,3 @@
       <%= f.submit button_text %>
   <% end %>
 </div>
-<script>
-  // Get all elements with class="App-btn-close-alert"
-  var close = document.getElementsByClassName("App-btn-close-alert");
-  var i;
-
-  // Loop through all close buttons
-  for (i = 0; i < close.length; i++) {
-    // When someone clicks on a close button
-    close[i].onclick = function(){
-
-      // Get the parent of <span class="App-btn-close-alert"> (<div class="alert">)
-      var div = this.parentElement;
-
-      // Set the opacity of div to 0 (transparent)
-      div.style.opacity = "0";
-
-      // Hide the div after 600ms (the same amount of milliseconds it takes to fade out)
-      setTimeout(function(){ div.style.display = "none"; }, 600);
-    }
-  }
-</script>

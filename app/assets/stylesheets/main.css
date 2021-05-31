@@ -1,15 +1,51 @@
 /*mobile first*/
-header {
+.App-main-header {
+  height: 10vh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.App-menu-icon {
+  font-size: 5rem;
+}
+
+.App-main-header div {
+  width: 35%;
+  height: 100%;
+  flex-direction: row;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-nav {
-  display: none;
+.App-main-header div a {
+  width: 45%;
+  margin: 0 auto;
+  font-size: 1.2rem;
 }
+
+.App-sidebar-menu {
+  width: 50%;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  /* border: 2px solid black; */
+  position: fixed!important;
+  z-index: 1;
+  overflow: auto;
+  background: linear-gradient(180deg, var(--nubank-second), var(--pure-blue));
+}
+
+.App-animate-left{position:relative;animation:animateleft 0.4s}@keyframes animateleft{from{left:-300px;opacity:0} to{left:0;opacity:1}}
+.App-animate-left-return{position:relative;animation:animateleft-return 0.6s}@keyframes animateleft-return{from{left:0;opacity:1} to{left:-300px;opacity:0}}
 
 main {
-  /* display: flex; */
   height: 89.9vh;
 }
 
@@ -20,11 +56,13 @@ section, article, nav {
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 3.5rem;
   margin: 1.6rem 0;
 }
 
 h2 {
+  text-align: center;
+
   font-size: 2rem;
   margin: 1.6rem 0;
 }
@@ -42,6 +80,8 @@ label {
   color: var(--nubank);
   font-size: 1.4rem;
   font-weight: 500;
+  margin-bottom: .5rem;
+  text-align: left;
 }
 
 a {
@@ -54,67 +94,63 @@ a {
   /* border: yellow 1px solid; */
 }
 
-form {
-  width: 100%;
-  height: 95%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: column;
+input[type="submit"] {
+  width: 15rem;
+  background-color: var(--green);
+  color: var(--light);
+  margin-top: 1.5rem;
+  height: 3.5rem;
+  border: none;
+  border-radius: .5rem;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-form input[type="text"], 
-form input[type="number"], 
+form div {
+  width: 100%;
+  padding: 0 auto;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+form input[type="text"],
+form input[type="email"], 
+form input[type="number"],
+form input[type="password"], 
 form input[type="date"], 
 form input[type="file"], 
 form input[type="submit"],
 form textarea, 
 form select {
   border: none;
-  border-radius: 1rem;
-  text-align: center;
 }
 
-form input[type="text"], 
-form input[type="number"], 
+form input[type="text"],
+form input[type="email"], 
+form input[type="number"],
+form input[type="password"], 
 form input[type="date"], 
-form input[type="file"], 
-form textarea, 
+form input[type="file"],
 form select {
- width: 60%;
+  height: 3rem;
+  border-radius: .5rem;
+  width: 100%;
+  padding: .4rem;
 }
 
-form input[type="submit"] {
-  background-color: var(--green);
-  color: var(--light);
-  margin-top: 1.5rem;
-  width: 30%;
-  height: 3.5rem;
-}
+form textarea {
+  min-height: 10rem;
+  width: 100%;
+  border-radius: .5rem;
+  padding: .4rem;
 
-form select {
- border: none;
- border-radius: 1rem;
 }
 
 
-
-form input, form select {
- height: 2.5rem;
-}
-
-.App-main-header {
-  height: 10vh;
-}
-
-.App-main-header a {
-  font-size: 5rem;
-}
-
-.App-main-header h1 {
-  margin-left: 30%;
-}
 
 .App-navigation-button {
   height: 6rem;
@@ -123,7 +159,6 @@ form input, form select {
   font-weight: 600;
 
 }
-
 
 /*design classes*/
 .App-flex {
@@ -161,30 +196,38 @@ form input, form select {
 
 .App-div-form {
   width: 90%;
-  height: 45rem;
+  height: 52rem;
   margin: 0 auto;
   /* border: yellow 1px solid; */
 
 }
 
-
+.App-div-form a {
+  color: var(--nubank);
+}
 
 /*Alerts*/
 .App-alert {
-  width: 25rem;
+  right: 0;
+  /* width: 25rem; */
   height: 5rem;
   padding: .2rem;
   background-color: #f44336;
   color: white;
-  opacity: 1;
-  transition: opacity .6s;
+  /* opacity: 1;
+  transition: opacity .6s; */
   margin-bottom: .5rem;
   border-radius: 1rem;
+  /* position: fixed !important; */
+  z-index: 1;
+  overflow: auto;
 }
 
+.App-alert{position:relative;animation:animateright 1s}@keyframes animateright{from{right:-300px;opacity:0} to{right:0;opacity:1}}
 .App-alert p {
   font-size: 1.2rem;
 }
+
 .App-alert.success {background-color: var(--success);}
 .App-alert.info {background-color: var(--info);}
 .App-alert.warning {background-color: var(--warning);}
@@ -205,45 +248,20 @@ form input, form select {
   color: black;
 }
 
-
-
-
-
-
-
-
-
 @media (min-width: 700px) {
+  .App-main-header div {
+    width: 25%;
+  }
+
+  .App-menu-icon {
+    display: none;
+  }
+
   main {
     height: 100%;
-    margin: 0 auto auto 15.09%;
-  }
-
-  nav {
-    display: block;
-    height: 100%;
-    width: 15%;
-    border: 1px solid gray;
-    position: fixed!important;
-    z-index: 1;
-    overflow: auto;
-  }
-
-  nav a {
-    width: 100%;
-    font-size: 2.2rem;
-  }
-
-  .App-main-header {
-    display: none;
-  }  
-
-  .App-main-header h1 {
-    margin-left: 40%;
   }
 
   .App-div-form {
-    width: 40%;
-
+    max-width: 45rem;
   }
 }

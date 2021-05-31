@@ -3,6 +3,20 @@
   <head>
     <title>Codeplay</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="shortcut icon" sizes="16x16" href="/assets/favicon/favicon-a661a9ff4b3971bdf8624c6356c4eafcad2132334c14fb6fa8d1de80d1a592ab.ico">
+    <link rel="icon" sizes="36x36" href="https://www.treinadev.com.br/assets/favicon/android-icon-36x36-0c57322116d5ac033dbebfd3035d43094380caac4d29ccdf15956d63253bfb25.png">
+    <link rel="icon" sizes="48x48" href="https://www.treinadev.com.br/assets/favicon/android-icon-48x48-fe7317a0f39a17e72a25424139270340b42069b28325c8d1f8225931ac89acec.png">
+    <link rel="icon" sizes="96x96" href="https://www.treinadev.com.br/assets/favicon/android-icon-96x96-9ba10aeb8ff74a17af32f32a1d5f71a7a0dcea5b1e40e140e7197d42d4c9aeed.png">
+    <link rel="icon" sizes="144x144" href="https://www.treinadev.com.br/assets/favicon/android-icon-144x144-feba94357b0025426a9f3d6d23e31b058207859b87bed451202f05f301ce98e9.png">
+    <link rel="icon" sizes="192x192" href="https://www.treinadev.com.br/assets/favicon/android-icon-192x192-c368a04980898c605b0ad4f8de623b8681dbd44252cc2f66f8e63ea6f1819ad9.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://www.treinadev.com.br/assets/favicon/apple-icon-57x57-d0b185f2f163819e7a7dd03792fe3a4636bf2d21c7017517eb719df891369d5e.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://www.treinadev.com.br/assets/favicon/apple-icon-60x60-e00ccd69a5dcddae239c5728ed487af8d6fab27806a6b6c9d50e7a4a588716a0.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://www.treinadev.com.br/assets/favicon/apple-icon-72x72-6a1244d9e515b5d1240533c9145c2d4836aee10642174782a21f6adb44ab3efb.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://www.treinadev.com.br/assets/favicon/apple-icon-76x76-c30cb0996ba393d8bc2fc8ba5785433c15362f5898b575e282910b501fc2dea9.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://www.treinadev.com.br/assets/favicon/apple-icon-114x114-84e1133a583fca5de345d0b9ac7a7c79d8321a5669b56597441f8f75d36d6cce.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://www.treinadev.com.br/assets/favicon/apple-icon-120x120-a504f291156ac7211295e22b447ba113623ecc0014ead707b3750a4941b0ebc7.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://www.treinadev.com.br/assets/favicon/apple-icon-152x152-d096cc6d330deef71832e22871578297396bba076b370f77ae441ac0773de5ce.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.treinadev.com.br/assets/favicon/apple-icon-180x180-2234f5e8c8638cf777566f4428a7996598961a7a067aa2efc5706556e2f1b23a.png">
     <link rel="icon" href="/public/favicon.ico">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,30 +27,35 @@
   </head>
 
   <body>
-    <!-- Top menu on small screens -->
-    <header class="App-main-header">|
-      <a>☰</a>
+    <!-- Top header of all aplication -->
+    <header class="App-main-header">
+      <a class="App-menu-icon" onclick="OpenSideBar()">☰</a>
       <h1>Codeplay</h1>
+      <% if user_signed_in? %>
+        <div>
+          <%= current_user.email %>
+          <%= link_to 'Sair', destroy_user_session_path, method: :delete %>      
+        </div>
+      <% else %>
+        <div>
+          <%= link_to 'Entrar', new_user_session_path, method: :get, class: "App-navigation-button App-round-border" %>
+          <%= link_to 'Registrar-me', new_user_registration_path, method: :get, class: "App-navigation-button App-round-border" %>
+        </div>
+      <% end %>
     </header>
 
-    <!-- Sidebar/menu on larges screens -->
-    <nav><br>
-        <h1>Codeplay</h1>
-      <div >
+    <!-- Sidebar/menu-->
+    <nav id="sidebarMenu" class="App-sidebar-menu"><br>
+      <div>
+        <a onclick="CloseSideBar()" style="color: black;font-size:2rem">X</a>
       </div>
-      <div >
-        <a>NavBar</a> 
+        <div>
+        <a href="/" style="color: black;font-size:2rem">HOME</a>
       </div>
     </nav> 
     <!-- !PAGE CONTENT! -->
     <main>
-      <% if user_signed_in? %>
-        <%= current_user.email %>
-        <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Registrar-me', new_user_registration_path, method: :get, class: "App-navigation-button App-round-border" %>
-        <%= link_to 'Entrar', new_user_session_path, method: :get, class: "App-navigation-button App-round-border" %>
-      <% end %>
+      
       <% if notice %>
         <div>
           <%= notice %>
@@ -49,5 +68,45 @@
       <% end %>
       <%= yield %>
     </main>
+
+    <script>
+      function OpenSideBar() {
+        const sidebar = document.getElementById("sidebarMenu") 
+        sidebar.classList.remove('App-animate-left-return');
+        sidebar.classList.add('App-animate-left');
+        sidebar.style.display = "flex";
+      }
+
+      function CloseSideBar() {
+        const sidebar = document.getElementById("sidebarMenu") 
+        sidebar.classList.remove('App-animate-left');
+        sidebar.classList.add('App-animate-left-return');
+        setTimeout(() => { 
+          document.getElementById("sidebarMenu").style.display = "none"; 
+        }, 500);
+      }
+    </script>
+
+  <script>
+  // Get all elements with class="App-btn-close-alert"
+  var close = document.getElementsByClassName("App-btn-close-alert");
+  var i;
+
+  // Loop through all close buttons
+  for (i = 0; i < close.length; i++) {
+    // When someone clicks on a close button
+    close[i].onclick = function(){
+
+      // Get the parent of <span class="App-btn-close-alert"> (<div class="alert">)
+      var div = this.parentElement;
+
+      // Set the opacity of div to 0 (transparent)
+      div.style.opacity = "0";
+
+      // Hide the div after 600ms (the same amount of milliseconds it takes to fade out)
+      setTimeout(function(){ div.style.display = "none"; }, 600);
+    }
+  }
+</script>
   </body>
 </html>
