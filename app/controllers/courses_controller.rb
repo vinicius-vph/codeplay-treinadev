@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-    before_action :set_course, only: %i[show edit update destroy]
+    before_action :set_course, only: %i[show edit update destroy enroll]
 
     def index
         @courses = Course.all
@@ -38,6 +38,14 @@ class CoursesController < ApplicationController
         redirect_to courses_path, notice: 'Curso apagado com sucesso!'
     end
 
+    def enroll
+        current_user.enrollments.create(course: @course, price: @course.price)
+        redirect_to my_courses_courses_path, notice: 'Curso comprado com sucesso!'
+    end
+
+    def my_courses
+        @enrollments = current_user.enrollments
+    end
     private
     
     def set_course

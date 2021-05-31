@@ -2,9 +2,16 @@
     <header>
         <h1>Detalhes do curso</h1>
     </header>
-
+ 
     <article>
         <header>
+            <% if user_signed_in? %>
+                <% unless current_user.courses.include?(@course) %>
+                    <%= link_to 'Comprar', enroll_course_path, method: :post %>
+                <% end %>
+            <% else %>
+                <p>Faça <%= link_to 'login', new_user_session_path %> para comprar este curso</p>
+            <% end %>
             <%= link_to 'Voltar', courses_path %>
             <%= link_to "Editar", edit_course_path(@course) %>
             <%= link_to "Apagar", @course, method: :delete %>
@@ -58,10 +65,15 @@
             <div id="lessons">
                 <% unless @course.lessons.any? %>
                     <p><%= t('.empty')%></p>
-                <% end %>%>
+                <% end %>
                 <% @course.lessons.each do |lesson| %>
                     <%= link_to lesson.name, [@course, lesson] %>
                     <p><%= t('lesson.duration', count: lesson.duration) %></p>
+                    <%# <% if user_signed_in? %> %>
+                        <%# <% if current_user.courses.include?(@course) %> %>
+                        <%# <% end %> %>
+                    <%# <% end %> %>
+                        <%# <p><%= lesson.name %></p> %>
                 <% end %>
             </div>
 
