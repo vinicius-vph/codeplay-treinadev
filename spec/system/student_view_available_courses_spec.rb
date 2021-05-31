@@ -24,8 +24,10 @@ describe 'Student view courses on homepage' do
 
   it 'and view enrollment link' do
     user = User.create!(email: 'jane@test.com.br', password: '123456')
+    
     instructor = Instructor.create!(name: 'Fulano Sicrano',
                                     email: 'fulano@codeplay.com.br')
+    
     available_course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
                             code: 'RUBYBASIC', price: 10,
                             enrollment_deadline: 1.month.from_now, instructor: instructor)
@@ -37,8 +39,25 @@ describe 'Student view courses on homepage' do
     expect(page).to have_link 'Comprar'
   end
 
-  xit 'and does not view enrollment if deadline is over' do
+  it 'and does not view enrollment if deadline is over' do
     # curso com data limite ultrapassada mas com usuario logado não deve exibir o link
+    user = User.create!(email: 'jane@test.com.br', password: '123456')
+
+    instructor = Instructor.create!(name: 'Fulano Sicrano',
+                                    email: 'fulano@codeplay.com.br')
+    
+    available_course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
+                                      code: 'RUBYBASIC', price: 10,
+                                      enrollment_deadline: 1.month.from_now, instructor: instructor)
+    unavailable_course = Course.create!(name: 'HTML', description: 'Um curso de HTML',
+                                        code: 'HTMLBASIC', price: 12,
+                                        enrollment_deadline: 1.day.ago, instructor: instructor)
+
+    login_as user, scope: :user
+    visit root_path
+  
+    expect(page).to_not have_link 'HTML'
+
   end
 
   it 'must be signed in to enroll' do
@@ -99,6 +118,25 @@ describe 'Student view courses on homepage' do
     expect(page).to have_link 'Monkey Patch'
   end
 
-  xit 'without enrollment cannot view lesson link' do
+  it 'without enrollment cannot view lesson link' do
+    user = User.create!(email: 'jane@test.com.br', password: '123456')
+    
+    instructor = Instructor.create!(name: 'Fulano Sicrano',
+                                    email: 'fulano@codeplay.com.br')
+    
+    available_course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
+                            code: 'RUBYBASIC', price: 10,
+                            enrollment_deadline: 1.month.from_now, instructor: instructor)
+    
+    Lesson.create!(name: 'Monkey Patch', course: available_course, duration: 20,
+                                                     content: 'Uma aula legal')
+
+    login_as user, scope: :user
+    visit root_path
+    click_on 'Ruby'
+
+    expect(page).to_not have_link 'Monkey Patch'
+    # expect(page).to have_text 'Monkey Patch'
+
   end
 end
