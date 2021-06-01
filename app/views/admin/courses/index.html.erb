@@ -9,15 +9,15 @@
     
     <article>
         <header class="App-flex-center">
-            <%= link_to "Registrar um Curso", new_course_path, method: :get, style: "width:30%", class: 'App-navigation-button App-round-border' %>
+            <%= link_to "Registrar um Curso", new_admin_course_path, method: :get, style: "width:30%", class: 'App-navigation-button App-round-border' %>
             <%= link_to "Voltar", root_path, method: :get, style: "width:30%", class: 'App-navigation-button App-round-border' %>
         </header>
-        <div class="App-flex-center App-flex-column">
+        <div class="App-flex-center App-flex-column" style="width:50%;margin:6rem auto">
             <% @courses.each do |course| %>
                 <table style="text-align:center;">
                     <thead>
                         <tr>
-                            <h2><%= link_to course.name, course %></h2>
+                            <h2><%= link_to course.name, [:admin, course] %></h2>
                         </tr>
                     </thead>
                     <tr>

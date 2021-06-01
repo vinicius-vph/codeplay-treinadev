@@ -19,7 +19,7 @@ describe 'Admin view lessons' do
     Lesson.create!(name: 'Aula para não ver', duration: 40,
                    content: 'Uma aula sobre Orientação a Objeto', course: other_course)
 
-    visit course_path(course)
+    visit admin_course_path(course)
 
     expect(page).to have_link('Classes e Objetos')
     expect(page).to have_text('10 minutos')

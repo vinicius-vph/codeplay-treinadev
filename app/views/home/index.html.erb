@@ -1,9 +1,9 @@
 <article>
     <h2>Boas vindas ao sistema de gestão de cursos e aulas</h2>
     <div class="App-flex-center">
-        <%= link_to 'Ver Cursos', courses_path, method: :get, class: "App-navigation-button App-round-border" %>
+        <%= link_to 'Ver Cursos', admin_courses_path, method: :get, class: "App-navigation-button App-round-border" %>
     </div>
-    <div class="App-flex-center App-flex-column">
+    <div class="App-flex-center App-flex-column" style="width:50%;margin:6rem auto">
         <h3>Cursos disponíveis</h3>
         <% @courses.each do |course| %>
             <table style="text-align:center;">

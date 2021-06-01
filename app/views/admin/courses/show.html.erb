@@ -12,9 +12,9 @@
             <% else %>
                 <p>Faça <%= link_to 'login', new_user_session_path %> para comprar este curso</p>
             <% end %>
-            <%= link_to 'Voltar', courses_path %>
-            <%= link_to "Editar", edit_course_path(@course) %>
-            <%= link_to "Apagar", @course, method: :delete %>
+            <%= link_to 'Voltar', admin_courses_path %>
+            <%= link_to "Editar", edit_admin_course_path(@course) %>
+            <%= link_to "Apagar", [:admin, @course], method: :delete %>
             <%= link_to 'Registrar uma aula', new_course_lesson_path(@course) %>
         </header>   
 
@@ -66,14 +66,11 @@
                 <% unless @course.lessons.any? %>
                     <p><%= t('.empty')%></p>
                 <% end %>
-                <% @course.lessons.each do |lesson| %>
-                    <%= link_to lesson.name, [@course, lesson] %>
+                <% @course.lessons.each do |lesson| %> 
+                    <%= link_to_if current_user&.courses&.include?(@course), lesson.name, [@course, lesson] do %> 
+                        <p><%= lesson.name %></p> 
+                    <% end %>
                     <p><%= t('lesson.duration', count: lesson.duration) %></p>
-                    <%# <% if user_signed_in? %> %>
-                        <%# <% if current_user.courses.include?(@course) %> %>
-                        <%# <% end %> %>
-                    <%# <% end %> %>
-                        <%# <p><%= lesson.name %></p> %>
                 <% end %>
             </div>
 
