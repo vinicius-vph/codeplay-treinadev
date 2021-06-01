@@ -9,10 +9,10 @@
         <div>
             <table style="text-align:center;">
                 <tr>
-                    <td><%= @lesson.name%></td>
+                    <td><%= @lesson.name %></td>
                 </tr>
                 <tr>
-                    <td><%= "#{@lesson.duration} minutos" %></td>
+                    <td><%= t 'lesson.duration', count: @lesson.duration %></td>
                 </tr>
                 <tr>
                     <td><%= @lesson.content %></td>

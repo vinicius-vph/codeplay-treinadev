@@ -1,6 +1,8 @@
 class LessonsController < ApplicationController
+    before_action :authenticate_user!, only: %i[show]
     before_action :set_course, only: %i[new create]
     before_action :set_lesson, only: %i[show]
+    before_action :user_has_enrollment, only: %i[show]
 
     def new
         @lesson = Lesson.new
@@ -28,7 +30,11 @@ class LessonsController < ApplicationController
     def set_course
         @course = Course.find(params[:course_id])
     end
-    
+
+    def user_has_enrollment
+        redirect_to @lesson.course unless current_user.courses.include?(@lesson.course)
+    end
+
     def lesson_params
         params.require(:lesson).permit(:name, :duration, :content)
     end

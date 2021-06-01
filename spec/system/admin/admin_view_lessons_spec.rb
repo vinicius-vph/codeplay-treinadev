@@ -19,7 +19,7 @@ describe 'Admin view lessons' do
     Lesson.create!(name: 'Aula para não ver', duration: 40,
                    content: 'Uma aula sobre Orientação a Objeto', course: other_course)
 
-    visit course_path(course)
+    visit admin_course_path(course)
 
     expect(page).to have_link('Classes e Objetos')
     expect(page).to have_text('10 minutos')
@@ -41,7 +41,7 @@ describe 'Admin view lessons' do
     expect(page).to have_content('Esse curso ainda não tem aulas cadastradas')
   end
 
-  it 'Should be able to see lessons details' do
+  it '- Should be able to see lessons details' do
     instructor = Instructor.create!(name: 'Jonh Doe',
       email: 'jonh@doe.com')
     course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',

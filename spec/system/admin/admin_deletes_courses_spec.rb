@@ -8,10 +8,10 @@ describe 'Admin deletes courses' do
                                  enrollment_deadline: '22/12/2033', instructor: instructor)
 
 
-        visit course_path(course)
+        visit admin_course_path(course)
         
         expect { click_on 'Apagar' }.to change {Course.count}.by(-1)
         expect(page).to have_text('Curso apagado com sucesso!')
-        expect(current_path).to have_text(courses_path)
+        expect(current_path).to have_text(admin_courses_path)
     end
 end
