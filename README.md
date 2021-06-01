@@ -7,8 +7,8 @@
 
 ### Some application screens
 <div>
-  <img src="https://github.com/vinicius-vph/codeplay-treinadev/tree/main/app/assets/images/codeplay_desktop.png" alt="codeplay_desktop" width="200px" />
-  <img src="https://github.com/vinicius-vph/codeplay-treinadev/tree/main/app/assets/images/codeplay_mobile.png" alt="codeplay_mobile" width="200px" />
+  <img src="https://github.com/vinicius-vph/codeplay-treinadev/blob/main/app/assets/images/codeplay_desktop.png" alt="codeplay_desktop" width="200px" />
+  <img src="https://github.com/vinicius-vph/codeplay-treinadev/blob/main/app/assets/images/codeplay_mobile.png" alt="codeplay_mobile" width="200px" />
 </div>
 
 <hr>
