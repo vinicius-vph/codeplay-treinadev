@@ -1,12 +1,13 @@
 ---
 pt-BR:
-  courses:
-    new:
-      title: 'Registrar um teste'
-    update:
-      success: 'Curso atualizado com sucesso'
-    show:
-      empty: 'Esse curso ainda não tem aulas cadastradas'
+  admin:
+    courses:
+      new:
+        title: 'Registrar um teste'
+      update:
+        success: 'Curso atualizado com sucesso'
+      show:
+        empty: 'Esse curso ainda não tem aulas cadastradas'
   activerecord:
     models:
       course: 'Curso'
@@ -17,6 +18,6 @@ pt-BR:
         price: 'Preço'
         code: 'Código'
         enrollment_deadline: 'Data limite de matrícula'
-        banner: 'Banner'
-        intructor_id: 'Instrutor(a)'
-        instructor: 'Instrutor(a)'
+        banner: Banner
+        intructor_id: Instrutor(a)
+        instructor: Instrutor(a)

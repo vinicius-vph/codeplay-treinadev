@@ -16,7 +16,7 @@
 </header>
 
 <div class="App-card App-div-form App-flex-center App-flex-column">
-  <%= form_with model: course do |f| %>
+  <%= form_with model: [:admin, course] do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
     <%= f.label :code %>

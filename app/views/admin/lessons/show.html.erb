@@ -1,0 +1,23 @@
+<section>
+    <header></header>
+
+    <article>
+        <header>
+            <%= link_to 'Voltar', [:admin, @lesson.course] %>
+        </header>
+
+        <div>
+            <table style="text-align:center;">
+                <tr>
+                    <td><%= @lesson.name %></td>
+                </tr>
+                <tr>
+                    <td><%= t 'lesson.duration', count: @lesson.duration %></td>
+                </tr>
+                <tr>
+                    <td><%= @lesson.content %></td>
+                </tr>
+            </table>
+        </div>
+    </article>
+</section>

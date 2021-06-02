@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :admin do
-    resources :courses
+    resources :courses do
+      resources :lessons, only: %i[new create show]
+    end
   end
 
   resources :courses, only: [:show] do

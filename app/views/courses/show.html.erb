@@ -12,15 +12,13 @@
             <% else %>
                 <p>Faça <%= link_to 'login', new_user_session_path %> para comprar este curso</p>
             <% end %>
-            <div class="App-flex-center App-flex-row">
-                <%= link_to 'Registrar uma aula', new_admin_course_lesson_path(@course), style: "width:8%", class: 'App-navigation-button App-round-border' %>
-                <%= link_to "Editar", edit_admin_course_path(@course), style: "width:8%", class: 'App-navigation-button App-round-border' %>
-                <%= link_to "Apagar", [:admin, @course], method: :delete, style: "width:8%", class: 'App-navigation-button App-round-border' %>
-                <%= link_to 'Voltar', admin_courses_path, style: "width:8%", class: 'App-navigation-button App-round-border' %>
-            </div>
+            <%= link_to 'Voltar', admin_courses_path %>
+            <%= link_to "Editar", edit_admin_course_path(@course) %>
+            <%= link_to "Apagar", [:admin, @course], method: :delete %>
+            <%= link_to 'Registrar uma aula', new_course_lesson_path(@course) %>
         </header>   
 
-        <div class="App-flex-center App-flex-column" style="width:50%;margin:6rem auto">
+        <div>
             <% if @course.banner.attached? %>
             <%= image_tag @course.banner %>
             <% end %>
@@ -69,7 +67,9 @@
                     <p><%= t('.empty')%></p>
                 <% end %>
                 <% @course.lessons.each do |lesson| %> 
-                    <%= link_to lesson.name, [:admin, @course, lesson] %> 
+                    <%= link_to_if current_user&.courses&.include?(@course), lesson.name, [@course, lesson] do %> 
+                        <p><%= lesson.name %></p> 
+                    <% end %>
                     <p><%= t('lesson.duration', count: lesson.duration) %></p>
                 <% end %>
             </div>

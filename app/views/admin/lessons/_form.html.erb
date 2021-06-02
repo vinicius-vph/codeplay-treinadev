@@ -15,7 +15,7 @@
 </header> %>
 
 <div>
-  <%= form_with model: [course, lesson] do |f| %>
+  <%= form_with model: [:admin, course, lesson] do |f| %>
       <%= f.label :name, 'Nome' %>
       <%= f.text_field :name %>
       

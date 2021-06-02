@@ -8,7 +8,7 @@ describe 'Admin updates courses' do
                                  enrollment_deadline: '22/12/2033', instructor: instructor)
         Instructor.create!(name: 'Jane Doe', email: 'jane@codeplay.com.br')  
 
-        visit course_path(course)
+        visit admin_course_path(course)
         click_on 'Editar'
         fill_in 'Nome', with: 'Ruby on Rails'
         fill_in 'Descrição', with: 'Um curso de Ruby'
