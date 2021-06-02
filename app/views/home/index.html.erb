@@ -1,8 +1,6 @@
 <article>
-    <h2>Boas vindas ao sistema de gestão de cursos e aulas</h2>
-    <div class="App-flex-center">
-        <%= link_to 'Ver Cursos', admin_courses_path, method: :get, class: "App-navigation-button App-round-border" %>
-    </div>
+    <h3>Boas vindas ao sistema de gestão de cursos e aulas</h3>
+
     <div class="App-flex-center App-flex-column" style="width:50%;margin:6rem auto">
         <h3>Cursos disponíveis</h3>
         <% @courses.each do |course| %>
@@ -12,18 +10,20 @@
                         <h3><%= link_to course.name, course %></h3>
                     </tr>
                 </thead>
-                <tr>
-                    <th><h4>Descrição</h4></th>
-                </tr>
-                <tr>
-                    <td><p><%= course.description %></p></td>
-                </tr>
-                <tr>
-                    <th><h4>Preço</h4></th>
-                </tr>
-                <tr>
-                    <td><p><%= number_to_currency course.price %></p></td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <th><h4>Descrição</h4></th>
+                    </tr>
+                    <tr>
+                        <td><p><%= course.description %></p></td>
+                    </tr>
+                    <tr>
+                        <th><h4>Preço</h4></th>
+                    </tr>
+                    <tr>
+                        <td><p><%= number_to_currency course.price %></p></td>
+                    </tr>
+                </tbody>
             </table>
         <% end %>
     </div>

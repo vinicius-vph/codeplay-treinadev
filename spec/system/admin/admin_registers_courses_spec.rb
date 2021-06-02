@@ -2,6 +2,8 @@ require 'rails_helper'
 
 describe 'Admin registers courses' do
   it '- Should be access courses from index page' do
+
+    user_login
     visit root_path
     click_on 'Ver Cursos'
 
@@ -12,6 +14,7 @@ describe 'Admin registers courses' do
   it '- Should be able create a course with instructor and see last created' do
     instructor = Instructor.create!(name: 'Jonh Doe', email: 'jonh@doe.com')
 
+    user_login
     visit root_path
     click_on 'Ver Cursos'
     click_on 'Registrar um Curso'
@@ -25,7 +28,6 @@ describe 'Admin registers courses' do
     attach_file 'Banner', Rails.root.join('tmp/img/teste.png')
     click_on 'Criar curso'
 
-    # expect(current_path).to eq(course_path(Course.last))
     expect(page).to have_content('Ruby on Rails') 
     expect(page).to have_content('Um curso de Ruby on Rails')
     expect(page).to have_content('RUBYONRAILS')
@@ -36,6 +38,7 @@ describe 'Admin registers courses' do
   end
 
   it '- Should be able to see that course attributes cannot be blank' do
+    user_login
     visit root_path
     click_on 'Ver Cursos'
     click_on 'Registrar um Curso'
@@ -51,7 +54,8 @@ describe 'Admin registers courses' do
     Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
                    code: 'RUBYBASIC', price: 10,
                    enrollment_deadline: '22/12/2033', instructor: instructor)
-
+    
+    user_login    
     visit root_path
     click_on 'Ver Cursos'
     click_on 'Registrar um Curso'

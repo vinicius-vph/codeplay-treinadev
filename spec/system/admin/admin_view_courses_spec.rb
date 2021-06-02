@@ -11,6 +11,7 @@ describe 'Admin view courses' do
                    code: 'RUBYONRAILS', price: 20,
                    enrollment_deadline: '20/12/2033', instructor: instructor)
 
+    user_login
     visit root_path
     click_on 'Ver Cursos'
 
@@ -31,7 +32,8 @@ describe 'Admin view courses' do
                    description: 'Um curso de Ruby on Rails',
                    code: 'RUBYONRAILS', price: 20,
                    enrollment_deadline: '20/12/2033', instructor: instructor)
-
+    
+    user_login    
     visit root_path
     click_on 'Ver Cursos'
     click_on 'Ruby on Rails'
@@ -44,6 +46,7 @@ describe 'Admin view courses' do
   end
 
   it '- Should be able to see no course available' do
+    user_login
     visit root_path
     click_on 'Ver Cursos'
 
@@ -55,7 +58,9 @@ describe 'Admin view courses' do
     Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
                    code: 'RUBYBASIC', price: 10,
                    enrollment_deadline: '22/12/2033', instructor: instructor)
-
+    
+    
+    user_login
     visit root_path
     click_on 'Ver Cursos'
     click_on 'Voltar'
@@ -68,7 +73,8 @@ describe 'Admin view courses' do
     Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
                    code: 'RUBYBASIC', price: 10,
                    enrollment_deadline: '22/12/2033', instructor: instructor)
-
+    
+    user_login
     visit root_path
     click_on 'Ver Cursos'
     click_on 'Ruby'
@@ -90,7 +96,9 @@ describe 'Admin view courses' do
       enrollment_deadline: '20/12/2033',
       instructor: instructor,
       banner: fixture_file_upload(Rails.root.join('tmp/img/teste.png')))
-
+    
+    user_login
+    
     visit root_path
     click_on 'Ver Cursos'
     click_on 'Ruby on Rails'
