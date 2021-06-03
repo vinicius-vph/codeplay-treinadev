@@ -68,7 +68,7 @@ describe 'Account Management' do
       fill_in 'Email', with: 'jane@doe.com.br'
       fill_in 'Senha', with: '123456'
       within 'form' do
-        click_on 'Log in'
+        click_on 'Entrar'
       end
 
       expect(page).to have_text('Login efetuado com sucesso')
@@ -87,7 +87,7 @@ describe 'Account Management' do
       fill_in 'Email', with: 'jane@doe.com.br'
       fill_in 'Senha', with: '123'
       within 'form' do
-        click_on 'Log in'
+        click_on 'Entrar'
       end
 
       expect(page).to have_text('Email ou senha inválida')
@@ -106,7 +106,7 @@ describe 'Account Management' do
       expect(page).to have_text('Saiu com sucesso')
       expect(page).to_not have_text('jane@test.com.br')
       expect(current_path).to eq(root_path)
-      expect(page).to have_link('Registrar-me')
+      expect(page).to_not have_link('Registrar-me')
       expect(page).to have_link('Entrar')
       expect(page).to_not have_link('Sair')
     end

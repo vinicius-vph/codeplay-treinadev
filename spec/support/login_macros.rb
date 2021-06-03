@@ -3,4 +3,9 @@ module LoginMacros
       login_as user, scope: :user
       user
     end
+
+    def student_login(student = Student.create!(email: 'jonh.doe@codeplay.com', password: '654321'))
+      login_as student, scope: :student
+      student
+    end
 end

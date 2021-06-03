@@ -1,0 +1,58 @@
+<section>
+    <header>
+        <% if student_signed_in? %>
+            <% unless current_student.courses.include?(@course) %>
+                <%= link_to 'Comprar', enroll_course_path, method: :post %>
+            <% end %>
+        <% else %>
+            <p>Faça <%= link_to 'login', new_student_session_path %> para comprar este curso</p>
+            <% end %>
+            <%= link_to 'Voltar', root_path, class: "App-navigation-button App-round-border" %>
+    </header>
+ 
+    <article>
+        <header class="App-flex-center App-flex-row">
+            <h2>Detalhes do curso</h2>
+
+        </header>   
+
+        <div class="App-flex-center App-flex-column" style="width:50%;margin:6rem auto">
+            <div class="App-card" style="color:black;">
+                <ul>
+                    <li>
+                        <% if @course.banner.attached? %>
+                            <%= image_tag @course.banner %>
+                        <% end %>
+                    </li>
+                    <li><h2><%= @course.name %></h2></li>
+                    <li><%= Course.human_attribute_name(:description) %></li>
+                    <li><%= @course.description %></li>
+                    <li>Código</li>
+                    <li><%= @course.code %></li>
+                    <li>Preço</li>
+                    <li><%= number_to_currency @course.price %></li>
+                    <li>Data limite de matricula</li>
+                    <li><%= l @course.enrollment_deadline %></li>
+                    <li>Instrutor(a)</li>
+                    <li><%= @course.instructor.name %></li>
+                    <li></li>
+                    <li></li>
+
+                </ul>
+                <div id="lessons">
+                    <% unless @course.lessons.any? %>
+                        <p><%= t('.empty')%></p>
+                    <% end %>
+                    <p>Lições Disponíveis</p> 
+                    <% @course.lessons.each do |lesson| %> 
+                        <%= link_to_if current_student&.courses&.include?(@course), lesson.name, [@course, lesson] do %> 
+                            <p><%= lesson.name %></p> 
+                        <% end %>
+                        <p><%= t('lesson.duration', count: lesson.duration) %></p>
+                    <% end %>
+                </div>
+            </div>
+
+        </div>
+    </article>
+</section>

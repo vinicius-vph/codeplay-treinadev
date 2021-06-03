@@ -5,13 +5,6 @@
  
     <article>
         <header>
-            <% if user_signed_in? %>
-                <% unless current_user.courses.include?(@course) %>
-                    <%= link_to 'Comprar', enroll_course_path, method: :post %>
-                <% end %>
-            <% else %>
-                <p>Faça <%= link_to 'login', new_user_session_path %> para comprar este curso</p>
-            <% end %>
             <div class="App-flex-center App-flex-row">
                 <%= link_to 'Registrar uma aula', new_admin_course_lesson_path(@course), style: "width:8%", class: 'App-navigation-button App-round-border' %>
                 <%= link_to "Editar", edit_admin_course_path(@course), style: "width:8%", class: 'App-navigation-button App-round-border' %>

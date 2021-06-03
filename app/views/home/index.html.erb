@@ -1,30 +1,20 @@
 <article>
-    <h3>Boas vindas ao sistema de gestão de cursos e aulas</h3>
+    <h3>Bem vindo a Codeplay</h3>
+    <p>Faça seu cadastro ou login e comece agora a desfrutar de todo conteúdo.</p>
+    <p>Aprenda com quem é líder de mercado.</p>
 
     <div class="App-flex-center App-flex-column" style="width:50%;margin:6rem auto">
-        <h3>Cursos disponíveis</h3>
+        <h3>Cursos disponíveis - deslogado</h3>
         <% @courses.each do |course| %>
-            <table style="text-align:center;">
-                <thead>
-                    <tr>
-                        <h3><%= link_to course.name, course %></h3>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th><h4>Descrição</h4></th>
-                    </tr>
-                    <tr>
-                        <td><p><%= course.description %></p></td>
-                    </tr>
-                    <tr>
-                        <th><h4>Preço</h4></th>
-                    </tr>
-                    <tr>
-                        <td><p><%= number_to_currency course.price %></p></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="App-card" style="color:black;" >
+                <ul>
+                    <li><h3><%= link_to course.name, course, style: "color:black;" %></h3></li>
+                    <li><h4>Descrição</h4></li>
+                    <li><p><%= course.description %></p></li>
+                    <li><h4>Preço</h4></li>
+                    <li><p><%= number_to_currency course.price %></p></li>
+                </ul>
+            </div>
         <% end %>
     </div>
 </article>

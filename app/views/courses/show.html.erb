@@ -1,77 +1,55 @@
 <section>
-    <header>
-        <h1>Detalhes do curso</h1>
+    <header class="App-flex-center App-flex-row">
+        <% if student_signed_in? %>
+            <% unless current_student.courses.include?(@course) %>
+                <%= link_to 'Comprar', enroll_course_path, method: :post %>
+            <% end %>
+        <% else %>
+            <p>Faça <%= link_to 'login', new_student_session_path %> para comprar este curso</p>
+            <% end %>
+            <%= link_to 'Voltar', root_path, class: "App-navigation-button App-round-border" %>
     </header>
  
     <article>
-        <header>
-            <% if user_signed_in? %>
-                <% unless current_user.courses.include?(@course) %>
-                    <%= link_to 'Comprar', enroll_course_path, method: :post %>
-                <% end %>
-            <% else %>
-                <p>Faça <%= link_to 'login', new_user_session_path %> para comprar este curso</p>
-            <% end %>
-            <%= link_to 'Voltar', admin_courses_path %>
-            <%= link_to "Editar", edit_admin_course_path(@course) %>
-            <%= link_to "Apagar", [:admin, @course], method: :delete %>
-            <%= link_to 'Registrar uma aula', new_course_lesson_path(@course) %>
+        <header class="App-flex-center App-flex-row">
+            <h2>Detalhes do curso</h2>
         </header>   
 
-        <div>
-            <% if @course.banner.attached? %>
-            <%= image_tag @course.banner %>
-            <% end %>
-            
-            <table style="text-align:center;">
-                <tr>
-                    <td>
-                        <h2><%= @course.name %></h2>
-                    </td>
-                </tr>
-                <tr>
-                    <th><%= Course.human_attribute_name(:description) %></th>
-                </tr>
-                <tr>
-                    <td><%= @course.description %></td>
-                </tr>
-                <tr>
-                    <th>Código</th>
-                    <tr>
-                        <td><%= @course.code %></td>
-                    </tr>
-                </tr>
-                <tr>
-                    <th>Preço</th>
-                    <tr>
-                        <td><%= number_to_currency @course.price %>
-                        </td>
-                    </tr>
-                </tr>
-                <tr>
-                    <th>Data limite de matricula</th>
-                    <tr>
-                        <td><%= l @course.enrollment_deadline %></td>
-                    </tr>
-                </tr>
-                <tr>
-                    <th>Instrutor(a)</th>
-                    <tr>
-                        <td><%= @course.instructor.name %></td>
-                    </tr>
-                </tr>                           
-                
-            </table>
-            <div id="lessons">
-                <% unless @course.lessons.any? %>
-                    <p><%= t('.empty')%></p>
-                <% end %>
-                <% @course.lessons.each do |lesson| %> 
-                    <%= link_to_if current_user&.courses&.include?(@course), lesson.name, [@course, lesson] do %> 
-                        <p><%= lesson.name %></p> 
+        <div class="App-flex-center App-flex-column" style="width:50%;margin:6rem auto">
+            <div class="App-card" style="color:black;">
+                <ul>
+                    <li>
+                        <% if @course.banner.attached? %>
+                            <%= image_tag @course.banner %>
+                        <% end %>
+                    </li>
+                    <li><h2><%= @course.name %></h2></li>
+                    <li><%= Course.human_attribute_name(:description) %></li>
+                    <li><%= @course.description %></li>
+                    <li>Código</li>
+                    <li><%= @course.code %></li>
+                    <li>Preço</li>
+                    <li><%= number_to_currency @course.price %></li>
+                    <li>Data limite de matricula</li>
+                    <li><%= l @course.enrollment_deadline %></li>
+                    <li>Instrutor(a)</li>
+                    <li><%= @course.instructor.name %></li>
+                    <li></li>
+                    <li></li>
+
+                </ul>
+                <div id="lessons">
+                    <% unless @course.lessons.any? %>
+                        <p><%= t('.empty')%></p>
                     <% end %>
-                    <p><%= t('lesson.duration', count: lesson.duration) %></p>
-                <% end %>
+                    <p>Lições Disponíveis</p> 
+                    <% @course.lessons.each do |lesson| %> 
+                        <%= link_to_if current_student&.courses&.include?(@course), lesson.name, [@course, lesson] do %> 
+                            <p><%= lesson.name %></p> 
+                        <% end %>
+                        <p><%= t('lesson.duration', count: lesson.duration) %></p>
+                    <% end %>
+                </div>
             </div>
 
         </div>

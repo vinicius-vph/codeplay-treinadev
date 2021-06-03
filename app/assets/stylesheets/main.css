@@ -172,7 +172,10 @@ table {
   height: 20vh;
 }
 
-
+ul, li {
+  list-style-type: none;
+  
+}
 
 .App-navigation-button {
   height: 6rem;

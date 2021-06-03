@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
-    layout :verify_layout
+    
+  layout :verify_layout
 
     def index
       @courses = Course.available.min_to_max
@@ -8,8 +9,12 @@ class HomeController < ApplicationController
     private
   
     def verify_layout
-      return 'admin' if user_signed_in?
-  
-      'application'
+      if user_signed_in?
+        'admin' 
+      elsif student_signed_in?
+        'student' 
+      else  
+        'application'      
+      end
     end
 end 

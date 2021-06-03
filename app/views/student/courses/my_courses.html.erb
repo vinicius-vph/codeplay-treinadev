@@ -1,0 +1,12 @@
+<section>
+  <header>
+    <h2>Meus Cursos</h2>
+  </header>
+  <article>
+    <% @enrollments.each do |enrollment| %>
+      <p><%=  enrollment.course.name %></p>
+      <p><%=  number_to_currency enrollment.price %></p>
+
+    <% end %>
+  </article>
+</section>

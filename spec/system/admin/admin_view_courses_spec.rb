@@ -112,4 +112,28 @@ describe 'Admin view courses' do
     expect(page).to have_content('20/12/2033')
 
   end
+  
+  it 'must be logged in to view courses button' do
+    visit root_path
+
+    expect(page).to_not have_link('Cursos')
+  end
+
+  it 'must be logged in to view courses through route' do
+    visit admin_courses_path
+
+    expect(current_path).to eq(new_user_session_path)
+  end
+
+  it 'must be logged in to view courses detail through route' do
+    instructor = Instructor.create!(name: 'Fulano Sicrano',
+                                    email: 'fulano@codeplay.com.br')
+    course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
+                            code: 'RUBYBASIC', price: 10,
+                            enrollment_deadline: '22/12/2033', instructor: instructor)
+
+     visit admin_course_path(course)
+
+     expect(current_path).to eq(new_user_session_path)
+  end
 end

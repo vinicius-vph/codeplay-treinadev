@@ -7,7 +7,7 @@ describe 'Admin updates courses' do
                                  code: 'RUBYBASIC', price: 10,
                                  enrollment_deadline: '22/12/2033', instructor: instructor)
         Instructor.create!(name: 'Jane Doe', email: 'jane@codeplay.com.br')  
-
+        user_login   
         visit admin_course_path(course)
         click_on 'Editar'
         fill_in 'Nome', with: 'Ruby on Rails'
@@ -26,4 +26,16 @@ describe 'Admin updates courses' do
         expect(page).to have_text(Date.current.strftime('%d/%m/%Y'))
         expect(page).to have_text('Curso atualizado com sucesso')
     end
+    
+    it 'must be looged in to update course' do
+        instructor = Instructor.create!(name: 'Fulano Sicrano',
+                                        email: 'fulano@codeplay.com.br')
+        course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
+                                code: 'RUBYBASIC', price: 10,
+                                enrollment_deadline: '22/12/2033', instructor: instructor)
+    
+        visit edit_admin_course_path(course)
+    
+        expect(current_path).to eq(new_user_session_path)
+      end
 end

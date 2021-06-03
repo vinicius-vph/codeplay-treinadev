@@ -31,6 +31,7 @@
     <header class="App-main-header">
       <a class="App-menu-icon" onclick="OpenSideBar()">☰</a>
       <h1>Codeplay</h1>
+      <p>Área do Admin</p>
       <% if user_signed_in? %>
         <div>
           <%= current_user.email %>
@@ -39,7 +40,7 @@
       <% else %>
         <div>
           <%= link_to 'Entrar', new_user_session_path, method: :get, class: "App-navigation-button App-round-border" %>
-          <%= link_to 'Registrar-me', new_user_registration_path, method: :get, class: "App-navigation-button App-round-border" %>
+          <%#= link_to 'Registrar-me', new_user_registration_path, method: :get, class: "App-navigation-button App-round-border" %>
         </div>
       <% end %>
     </header>
@@ -88,19 +89,19 @@
     </script>
 
   <script>
-  var close = document.getElementsByClassName("App-btn-close-alert");
-  var i;
+    var close = document.getElementsByClassName("App-btn-close-alert");
+    var i;
 
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function(){
+    for (i = 0; i < close.length; i++) {
+      close[i].onclick = function(){
 
-      var div = this.parentElement;
+        var div = this.parentElement;
 
-      div.style.opacity = "0";
+        div.style.opacity = "0";
 
-      setTimeout(function(){ div.style.display = "none"; }, 600);
+        setTimeout(function(){ div.style.display = "none"; }, 600);
+      }
     }
-  }
 </script>
   </body>
 </html>

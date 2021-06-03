@@ -27,33 +27,28 @@
   </head>
 
   <body>
-    <!-- Top header of all aplication -->
     <header class="App-main-header">
       <a class="App-menu-icon" onclick="OpenSideBar()">☰</a>
-      <h1>Codeplay</h1>
-      <% if user_signed_in? %>
-        <div>
-          <%= current_user.email %>
-          <%= link_to 'Sair', destroy_user_session_path, method: :delete %>      
-        </div>
-      <% else %>
-        <div>
-          <%= link_to 'Entrar', new_user_session_path, method: :get, class: "App-navigation-button App-round-border" %>
-          <%= link_to 'Registrar-me', new_user_registration_path, method: :get, class: "App-navigation-button App-round-border" %>
-        </div>
-      <% end %>
+          <h1><a href=<%= root_path %>>Codeplay</a></h1>
+           <p>Área deslogada</p>
     </header>
 
-    <!-- Sidebar/menu-->
     <nav id="sidebarMenu" class="App-sidebar-menu"><br>
-      <div>
-        <a onclick="CloseSideBar()" style="color: black;font-size:2rem">X</a>
+      <div class="App-flex App-flex-row" style="width:100%">
+        <a href="#" style="color: black;font-size:2rem">MENU</a>
+          <a onclick="CloseSideBar()" style="color: black;font-size:2rem">X</a>
       </div>
-        <div>
-        <a href="/" style="color: black;font-size:2rem">HOME</a>
+      <div class="App-flex App-flex-column" style="width:100%">
+          <div class="App-flex App-flex-row">
+            <a style="color: black;">Tem cadastro na CodePlay?</a>
+            <%= link_to 'Acesse seu Perfil', new_student_session_path, method: :get, class: "App-navigation-button App-round-border", style: "color:black;" %>
+          
+          </div>
+          <%= link_to 'Registrar-me', new_student_registration_path, method: :get, class: "App-navigation-button App-round-border", style: "color:black;" %>
+          <%= link_to 'Entrar como Administrador', new_user_session_path, method: :get, class: "App-navigation-button App-round-border", style: "color:black;" %>
       </div>
-    </nav> 
-    <!-- !PAGE CONTENT! -->
+
+    </nav>
     <main>
       
       <% if notice %>
@@ -88,25 +83,19 @@
     </script>
 
   <script>
-  // Get all elements with class="App-btn-close-alert"
-  var close = document.getElementsByClassName("App-btn-close-alert");
-  var i;
+    var close = document.getElementsByClassName("App-btn-close-alert");
+    var i;
 
-  // Loop through all close buttons
-  for (i = 0; i < close.length; i++) {
-    // When someone clicks on a close button
-    close[i].onclick = function(){
+    for (i = 0; i < close.length; i++) {
+      close[i].onclick = function(){
 
-      // Get the parent of <span class="App-btn-close-alert"> (<div class="alert">)
-      var div = this.parentElement;
+        var div = this.parentElement;
 
-      // Set the opacity of div to 0 (transparent)
-      div.style.opacity = "0";
+        div.style.opacity = "0";
 
-      // Hide the div after 600ms (the same amount of milliseconds it takes to fade out)
-      setTimeout(function(){ div.style.display = "none"; }, 600);
+        setTimeout(function(){ div.style.display = "none"; }, 600);
+      }
     }
-  }
 </script>
   </body>
 </html>
