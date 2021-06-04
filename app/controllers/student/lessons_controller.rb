@@ -1,5 +1,4 @@
 class Student::LessonsController < Student::StudentController 
-    # before_action :authenticate_student!, only: %i[show]
     before_action :set_lesson, only: %i[show]
     before_action :user_has_enrollment, only: %i[show]
 

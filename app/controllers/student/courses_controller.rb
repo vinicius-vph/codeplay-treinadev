@@ -22,11 +22,5 @@ class Student::CoursesController < Student::StudentController
     def set_course
       @course = Course.find(params[:id])
     end
-  
-    # def course_params
-    #   params
-    #     .require(:course)
-    #     .permit(:name, :description, :code, :price, :instructor_id,
-    #             :enrollment_deadline, :banner)
-    # end
+
   end

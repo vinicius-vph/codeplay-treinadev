@@ -27,7 +27,6 @@
   </head>
 
   <body>
-    <!-- Top header of all aplication -->
     <header class="App-main-header">
       <a class="App-menu-icon" onclick="OpenSideBar()">☰</a>
       <h1>Codeplay</h1>
@@ -40,22 +39,19 @@
       <% else %>
         <div>
           <%= link_to 'Entrar', new_user_session_path, method: :get, class: "App-navigation-button App-round-border" %>
-          <%#= link_to 'Registrar-me', new_user_registration_path, method: :get, class: "App-navigation-button App-round-border" %>
         </div>
       <% end %>
     </header>
 
-    <!-- Sidebar/menu-->
     <nav id="sidebarMenu" class="App-sidebar-menu"><br>
         <a onclick="CloseSideBar()" style="color: black;font-size:2rem">X</a>
-        <a href="/" style="color: black;font-size:2rem">HOME</a>
+        <a href=<%= admin_courses_path %> style="color: black;font-size:2rem">HOME</a>
         <%= link_to 'Ver Cursos', admin_courses_path, style: "color: black;font-size:2rem" %>
       <div>
       </div>
         <div>
       </div>
     </nav> 
-    <!-- !PAGE CONTENT! -->
     <main>
       <% if notice %>
         <div>
