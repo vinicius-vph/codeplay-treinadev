@@ -1,12 +1,8 @@
 <article>
-    <% unless user_signed_in? or student_signed_in? %>
-        <h3>Bem vindo a Codeplay</h3>
-        <p>Faça seu cadastro ou login e comece agora a desfrutar de todo conteúdo.</p>
-        <p>Aprenda com quem é líder de mercado.</p>
-    <% end %>
+        <h3>Bem vindo a Admin</h3>
 
     <div class="App-flex-center App-flex-column" style="width:50%;margin:6rem auto">
-        <h3>Cursos disponíveis - deslogado</h3>
+        <h3>Cursos disponíveis</h3>
         <% @courses.each do |course| %>
             <div class="App-card" style="color:black;" >
                 <ul>

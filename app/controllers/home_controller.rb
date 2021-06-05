@@ -4,6 +4,14 @@ class HomeController < ApplicationController
 
     def index
       @courses = Course.available.min_to_max
+      if user_signed_in?
+        render 'admin/index' 
+
+      elsif student_signed_in?
+        render 'student/index' 
+      else  
+        'application'  
+      end
     end
   
     private
@@ -12,9 +20,9 @@ class HomeController < ApplicationController
       if user_signed_in?
         'admin' 
       elsif student_signed_in?
-        'student' 
+        'student'         
       else  
-        'application'      
+        'application'  
       end
     end
 end 
