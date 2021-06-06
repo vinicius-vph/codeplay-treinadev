@@ -68,6 +68,14 @@ body {
 nav {
     background: linear-gradient(170deg, var(--nubank), var(--pure-blue));
 }
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
   
 @media (min-width: 700px) {
     :root{
