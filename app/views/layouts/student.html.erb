@@ -15,26 +15,28 @@
   </head>
 
   <body>
-    <header class="App-main-header">
-      <a class="App-menu-icon" onclick="OpenSideBar()">☰</a>
-      <h1>Codeplay</h1>
-      <p>Área do Estudante</p>
-      <% if student_signed_in? %>
-        <div>
-          <%= current_student.email %>
-          <%= link_to 'Sair', destroy_student_session_path, method: :delete %>      
+    <nav id="sidebarMenu" class="navbar navbar-light"><br>
+      <div class="container-fluid">
+        <div class="dropdown">
+          <button class="navbar-toggler dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+            <li class="dropdown-item">
+              <%= link_to 'Ver Cursos', my_courses_student_courses_path, style: "color: black;font-size:2rem" %>
+            </li>
+            <li>
+              <%= link_to 'Editar meus dados',  edit_student_registration_path, style: "color: black;font-size:2rem" %>
+            </li>
+          </ul>
         </div>
-      <% end %>
-    </header>
-
-    <nav id="sidebarMenu" class="App-sidebar-menu"><br>
-        <a onclick="CloseSideBar()" style="color: black;font-size:2rem">X</a>
-        <a href=<%= root_path %> style="color: black;font-size:2rem">HOME</a>
-        <%= link_to 'Ver Cursos', my_courses_student_courses_path, style: "color: black;font-size:2rem" %>
-        <%= link_to 'Editar meus dados',  edit_student_registration_path, style: "color: black;font-size:2rem" %>
-      <div>
-      </div>
-        <div>
+        <h1>Codeplay</h1>
+        <% if student_signed_in? %>
+          <div>
+            <%= current_student.email %>
+            <%= link_to 'Sair', destroy_student_session_path, method: :delete %>      
+          </div>
+        <% end %>
       </div>
     </nav> 
     <main>
@@ -48,6 +50,7 @@
           <%= alert %>
         </div>
       <% end %>
+      <p>Área do Estudante</p>
       <%= yield %>
     </main>
 

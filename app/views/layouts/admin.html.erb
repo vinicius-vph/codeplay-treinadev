@@ -15,29 +15,29 @@
   </head>
 
   <body>
-    <header class="">
-      <a class="" onclick="OpenSideBar()">☰</a>
-      <h1>Codeplay</h1>
-      <p>Área do Admin</p>
-      <% if user_signed_in? %>
-        <div>
-          <%= current_user.email %>
-          <%= link_to 'Sair', destroy_user_session_path, method: :delete %>      
+    <nav id="sidebarMenu" class="navbar navbar-light"><br>
+      <div class="container-fluid">
+        <div class="dropdown"> 
+          <button class="navbar-toggler dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
+            <li class="dropdown-item">
+                <%= link_to 'Ver Cursos', admin_courses_path, style: "color: black;font-size:2rem" %>
+            </li>
+          </ul>
         </div>
-      <% else %>
-        <div>
-          <%= link_to 'Entrar', new_user_session_path, method: :get, class: "" %>
-        </div>
-      <% end %>
-    </header>
-
-    <nav id="sidebarMenu" class=""><br>
-        <a onclick="CloseSideBar()" style="color: black;font-size:2rem">X</a>
-        <a href=<%= root_path %> style="color: black;font-size:2rem">HOME</a>
-        <%= link_to 'Ver Cursos', admin_courses_path, style: "color: black;font-size:2rem" %>
-      <div>
-      </div>
-        <div>
+          <h1><a href=<%= root_path %>>Codeplay</a></h1>
+          <% if user_signed_in? %>
+            <div>
+              <%= current_user.email %>
+              <%= link_to 'Sair', destroy_user_session_path, method: :delete %>      
+            </div>
+          <% else %>
+            <div>
+              <%= link_to 'Entrar', new_user_session_path, method: :get, class: "" %>
+            </div>
+          <% end %>
       </div>
     </nav> 
     <main>
@@ -51,6 +51,7 @@
           <%= alert %>
         </div>
       <% end %>
+      <p>Área do Admin</p>
       <%= yield %>
     </main>
 
@@ -87,5 +88,5 @@
       }
     }
 </script>
-  </body>
+</body>
 </html>

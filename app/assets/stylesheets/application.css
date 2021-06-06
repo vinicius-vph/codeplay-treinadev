@@ -64,6 +64,10 @@ body {
     background: linear-gradient(180deg, var(--nubank), var(--pure-blue)) fixed;
     color: var(--nubank-second);
 }
+
+nav {
+    background: linear-gradient(170deg, var(--nubank), var(--pure-blue));
+}
   
 @media (min-width: 700px) {
     :root{

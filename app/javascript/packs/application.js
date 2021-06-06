@@ -5,7 +5,7 @@
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
-import {Tooltip} from bootstrap
+import * as bootstrap from bootstrap
 
 Rails.start()
 Turbolinks.start()

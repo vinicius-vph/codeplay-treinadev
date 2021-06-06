@@ -16,28 +16,36 @@
 
   <body>
     <header class="">
-      <a class="" onclick="OpenSideBar()">☰</a>
-          <h1><a href=<%= root_path %>>Codeplay</a></h1>
-           <p>Área deslogada</p>
     </header>
 
-    <nav id="sidebarMenu" class=""><br>
-      <div class="" style="width:100%">
-        <a href="#" style="color: black;font-size:2rem">MENU</a>
-          <a onclick="CloseSideBar()" style="color: black;font-size:2rem">X</a>
+    <nav id="sidebarMenu" class="navbar navbar-light"><br>
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+        data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" 
+        aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+        </button>
+        <h1><a href=<%= root_path %>>Codeplay</a></h1>
       </div>
-      <div class="" style="width:100%">
-          <div class="">
-            <a style="color: black;">Tem cadastro na CodePlay?</a>
-            <%= link_to 'Acesse seu Perfil', new_student_session_path, method: :get, class: "", style: "color:black;" %>
-          
-          </div>
-          <%= link_to 'Registrar-me', new_student_registration_path, method: :get, class: "", style: "color:black;" %>
-          <%= link_to 'Entrar como Administrador', new_user_session_path, method: :get, class: "", style: "color:black;" %>
-      </div>
-
     </nav>
-    <main>
+    <main class="container">
+      <div class="container-sm">
+        <div class="row">
+          <div class="col">
+            <span style="color: black;">Tem cadastro na CodePlay?</span>
+            <%= link_to 'Acesse seu Perfil', new_student_session_path, method: :get, class: "btn btn-primary", style: "" %>
+          </div>
+          <div class="col">
+            <%= link_to 'Registrar-me', new_student_registration_path, method: :get, class: "btn btn-success", style: "" %>
+            <%= link_to 'Entrar como Administrador', new_user_session_path, method: :get, class: "btn btn-secondary", style: "" %>
+          </div>
+        
+        </div>
+
+          
+        <div class="">
+        </div>
+      </div>
       
       <% if notice %>
         <div>
@@ -49,7 +57,9 @@
           <%= alert %>
         </div>
       <% end %>
+        <p>Área deslogada</p>
       <%= yield %>
+
     </main>
 
     <script>
