@@ -20,5 +20,10 @@ Rails.application.routes.draw do
     end 
   end
 
-  resources :courses, only: %i[show]
+  
+  namespace :api do
+    namespace :v1 do
+      resources :courses, only: %i[index show create], param: :code
+    end
+  end
 end
