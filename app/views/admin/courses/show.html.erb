@@ -5,15 +5,15 @@
  
     <article>
         <header>
-            <div class="App-flex-center App-flex-row">
-                <%= link_to 'Registrar uma aula', new_admin_course_lesson_path(@course), style: "width:8%", class: 'App-navigation-button App-round-border' %>
-                <%= link_to "Editar", edit_admin_course_path(@course), style: "width:8%", class: 'App-navigation-button App-round-border' %>
-                <%= link_to "Apagar", [:admin, @course], method: :delete, style: "width:8%", class: 'App-navigation-button App-round-border' %>
-                <%= link_to 'Voltar', admin_courses_path, style: "width:8%", class: 'App-navigation-button App-round-border' %>
+            <div class="">
+                <%= link_to 'Registrar uma aula', new_admin_course_lesson_path(@course), style: "width:8%", class: '' %>
+                <%= link_to "Editar", edit_admin_course_path(@course), style: "width:8%", class: '' %>
+                <%= link_to "Apagar", [:admin, @course], method: :delete, style: "width:8%", class: '' %>
+                <%= link_to 'Voltar', admin_courses_path, style: "width:8%", class: '' %>
             </div>
         </header>   
 
-        <div class="App-flex-center App-flex-column" style="width:50%;margin:6rem auto">
+        <div class="" style="width:50%;margin:6rem auto">
             <% if @course.banner.attached? %>
             <%= image_tag @course.banner %>
             <% end %>

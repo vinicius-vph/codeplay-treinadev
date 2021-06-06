@@ -1,5 +1,5 @@
 <section>
-    <header class="App-flex-center">
+    <header class="">
         <% if @courses.empty? %>
             <h3>Nenhum curso disponível</h3>     
         <% else %>
@@ -8,12 +8,12 @@
     </header>
     
     <article>
-        <header class="App-flex-center">
+        <header class="">
             <p>Cursos admin</p>
-            <%= link_to "Registrar um Curso", new_admin_course_path, method: :get, style: "width:40%", class: 'App-navigation-button App-round-border' %>
-            <%= link_to "Voltar", root_path, method: :get, style: "width:40%", class: 'App-navigation-button App-round-border' %>
+            <%= link_to "Registrar um Curso", new_admin_course_path, method: :get, style: "width:40%", class: '' %>
+            <%= link_to "Voltar", root_path, method: :get, style: "width:40%", class: '' %>
         </header>
-        <div class="App-flex-center App-flex-column" style="width:50%;margin:6rem auto">
+        <div class="" style="width:50%;margin:6rem auto">
             <% @courses.each do |course| %>
                 <table style="text-align:center">
                     <thead>

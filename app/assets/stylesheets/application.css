@@ -1,4 +1,8 @@
- :root {
+/*
+*= require bootstrap
+*/
+
+:root {
     --nubank:#81259D;
     --nubank-second:rgb(244, 231, 255);
     --blue: #007bff;

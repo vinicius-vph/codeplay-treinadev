@@ -1,5 +1,5 @@
 <section>
-    <header class="App-flex-center App-flex-row">
+    <header class="">
         <% if student_signed_in? %>
             <% unless current_student.courses.include?(@course) %>
                 <%= link_to 'Comprar', enroll_course_path, method: :post %>
@@ -7,16 +7,16 @@
         <% else %>
             <p>Faça <%= link_to 'login', new_student_session_path %> para comprar este curso</p>
             <% end %>
-            <%= link_to 'Voltar', root_path, class: "App-navigation-button App-round-border" %>
+            <%= link_to 'Voltar', root_path, class: "" %>
     </header>
  
     <article>
-        <header class="App-flex-center App-flex-row">
+        <header class="">
             <h2>Detalhes do curso</h2>
         </header>   
 
-        <div class="App-flex-center App-flex-column" style="width:50%;margin:6rem auto">
-            <div class="App-card" style="color:black;">
+        <div class="" style="width:50%;margin:6rem auto">
+            <div class="" style="color:black;">
                 <ul>
                     <li>
                         <% if @course.banner.attached? %>

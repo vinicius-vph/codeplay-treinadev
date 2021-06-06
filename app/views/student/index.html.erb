@@ -1,10 +1,10 @@
 <article>
         <h3>Bem vindo Estudante <%= current_student.email.split('@').first %></h3>
 
-    <div class="App-flex-center App-flex-column" style="width:50%;margin:6rem auto">
+    <div class="" style="width:50%;margin:6rem auto">
         <h3>Cursos disponíveis para Estudantes</h3>
         <% @courses.each do |course| %>
-            <div class="App-card" style="color:black;" >
+            <div class="" style="color:black;" >
                 <ul>
                     <li><h3><%= link_to course.name, course, style: "color:black;" %></h3></li>
                     <li><h4>Descrição</h4></li>

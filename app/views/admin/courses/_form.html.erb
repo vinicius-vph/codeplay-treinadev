@@ -1,21 +1,21 @@
-<header class="App-flex-column" style="justify-content: space-around; position: relative;">
+<header class="" style="justify-content: space-around; position: relative;">
   <% if course.errors.any? %>
-    <div class="App-alert info App-flex-center" >
+    <div class="" >
       <p>Foram encontrados <%= course.errors.count %> erro(s):</p>
-      <span class="App-btn-close-alert">&times;</span>
+      <span class="">&times;</span>
     </div> 
     
     <% course.errors.full_messages.each do |error| %>
-      <div class="App-alert warning App-flex-center">
+      <div class="">
         <p class=""><%= error %></p>
-          <span class="App-btn-close-alert">&times;</span>
+          <span class="">&times;</span>
       </div> 
     <% end %>
 
   <% end %>
 </header>
 
-<div class="App-card App-div-form App-flex-center App-flex-column">
+<div class="">
   <%= form_with model: [:admin, course] do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>

@@ -1,23 +1,23 @@
 <section>
-  <header class="App-flex-column" style="justify-content: space-around; position: relative;">
+  <header class="" style="justify-content: space-around; position: relative;">
     <h2>Registrar</h2>
     <% if @student.errors.any? %>
-      <div class="App-alert info App-flex-center" >
+      <div class="" >
         <p>Foram encontrados <%= @user.errors.count %> erro(s):</p>
-        <span class="App-btn-close-alert">&times;</span>
+        <span class="">&times;</span>
       </div> 
       
       <% @student.errors.full_messages.each do |error| %>
-        <div class="App-alert warning App-flex-center">
+        <div class="">
           <p class=""><%= error %></p>
-            <span class="App-btn-close-alert">&times;</span>
+            <span class="">&times;</span>
         </div> 
       <% end %>
 
     <% end %>
   </header>
 
-  <div class="App-card App-div-form App-flex-center App-flex-column">
+  <div class="">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "students/shared/error_messages", resource: resource %>
 
